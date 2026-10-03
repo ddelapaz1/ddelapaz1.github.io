@@ -172,7 +172,7 @@
 
     .apps {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
       list-style: none;
       padding: 0;
@@ -445,6 +445,19 @@
       .app { transform: none; }
       .wave .signal { stroke-dashoffset: 0; }
     }
+
+    .app-tf { --mint:#9edcff; }
+    .app-tf:hover { border-color:#9edcff80; }
+    .app-tf::before { background:radial-gradient(400px circle at var(--mx) var(--my),#9edcff16,transparent 70%); }
+    .app-tf .wave .ghost { stroke:#9edcff35; }
+    .app-tf:hover .signal { filter:drop-shadow(0 0 5px #9edcff80); }
+    .app-tf .tag { border-color:#9edcff30; }
+    .app-tf .ripple { background:#9edcff35; }
+    .app-tf h3 { font-size:26px; }
+
+    @media (min-width:701px) and (max-width:1000px) {
+      .apps { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
   </style>
 </head>
 
@@ -479,7 +492,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">02 / EXPLORA</span>
+          <span class="count">03 / EXPLORA</span>
         </div>
 
         <ul class="apps">
@@ -531,6 +544,28 @@
               </svg>
               <div class="card-bottom">
                 <div><h3 id="am-title"><small>Radiocomunicacions:</small>Laboratori AM</h3><p id="am-desc">Explora la modulació d'amplitud i l'espectre del senyal AM.</p></div>
+                <span class="arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="app app-tf" href="/temps_frequencia/" aria-labelledby="tf-title" aria-describedby="tf-desc">
+              <div class="card-top">
+                <span>LAB / 003</span>
+                <span class="tag">Temps → Freqüència</span>
+              </div>
+              <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                <path d="M0 47.5H185 M275 80H460" stroke="#ffffff15" />
+                <path class="signal" pathLength="900" d="M0 47.5 C15 9 30 9 45 47.5 S75 86 90 47.5 S120 9 135 47.5 S165 86 180 47.5" />
+                <path class="ghost" d="M212 47.5H248 M238 37.5L248 47.5L238 57.5" />
+                <path class="signal" pathLength="900" d="M295 80V24 M340 80V45 M385 80V59 M430 80V67" />
+              </svg>
+              <div class="card-bottom">
+                <div>
+                  <h3 id="tf-title"><small>Representació de senyals:</small>del temps a la freqüència</h3>
+                  <p id="tf-desc">Un mateix senyal, dues mirades: la forma temporal i les freqüències que el componen.</p>
+                </div>
                 <span class="arrow" aria-hidden="true">→</span>
               </div>
             </a>
