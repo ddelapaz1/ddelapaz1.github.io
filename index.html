@@ -172,7 +172,7 @@
 
     .apps {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
       list-style: none;
       padding: 0;
@@ -458,6 +458,14 @@
     @media (min-width:701px) and (max-width:1000px) {
       .apps { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
+
+    .app-ict { --mint:#f3d68a; }
+    .app-ict:hover { border-color:#f3d68a80; }
+    .app-ict::before { background:radial-gradient(400px circle at var(--mx) var(--my),#f3d68a16,transparent 70%); }
+    .app-ict .wave .ghost { stroke:#f3d68a35; }
+    .app-ict:hover .signal { filter:drop-shadow(0 0 5px #f3d68a80); }
+    .app-ict .tag { border-color:#f3d68a30; }
+    .app-ict .ripple { background:#f3d68a35; }
   </style>
 </head>
 
@@ -492,7 +500,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">03 / EXPLORA</span>
+          <span class="count">04 / EXPLORA</span>
         </div>
 
         <ul class="apps">
@@ -565,6 +573,27 @@
                 <div>
                   <h3 id="tf-title"><small>Representació de senyals:</small>del temps a la freqüència</h3>
                   <p id="tf-desc">Un mateix senyal, dues mirades: la forma temporal i les freqüències que el componen.</p>
+                </div>
+                <span class="arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="app app-ict" href="/edifici_ict/" aria-labelledby="ict-title" aria-describedby="ict-desc">
+              <div class="card-top">
+                <span>LAB / 004</span>
+                <span class="tag">Telecomunicacions · 3D</span>
+              </div>
+              <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                <path class="ghost" d="M135 79L215 94L315 68 M175 39L215 48L275 33 M175 58L215 67L275 52 M190 25V72 M200 27V75 M235 30V76 M255 23V69" />
+                <path class="signal" pathLength="900" d="M165 20L225 33L285 12L225 0Z M165 20V75L225 89L285 67V12 M225 33V89 M165 39L225 53L285 31 M165 57L225 71L285 49" />
+                <path class="ghost" d="M242 83V37L267 28V10 M242 62L269 52 M242 43L269 34" stroke-dasharray="4 4" />
+              </svg>
+              <div class="card-bottom">
+                <div>
+                  <h3 id="ict-title">Simulació 3D d'una ICT</h3>
+                  <p id="ict-desc">Explora un edifici en 3D i la seva infraestructura comuna de telecomunicacions.</p>
                 </div>
                 <span class="arrow" aria-hidden="true">→</span>
               </div>
