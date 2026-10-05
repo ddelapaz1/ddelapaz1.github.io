@@ -466,6 +466,14 @@
     .app-ict:hover .signal { filter:drop-shadow(0 0 5px #f3d68a80); }
     .app-ict .tag { border-color:#f3d68a30; }
     .app-ict .ripple { background:#f3d68a35; }
+
+    .app-fiber { --mint:#f4b4cb; }
+    .app-fiber:hover { border-color:#f4b4cb80; }
+    .app-fiber::before { background:radial-gradient(400px circle at var(--mx) var(--my),#f4b4cb16,transparent 70%); }
+    .app-fiber .wave .ghost { stroke:#f4b4cb35; }
+    .app-fiber:hover .signal { filter:drop-shadow(0 0 5px #f4b4cb80); }
+    .app-fiber .tag { border-color:#f4b4cb30; }
+    .app-fiber .ripple { background:#f4b4cb35; }
   </style>
 </head>
 
@@ -500,7 +508,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">04 / EXPLORA</span>
+          <span class="count">05 / EXPLORA</span>
         </div>
 
         <ul class="apps">
@@ -594,6 +602,28 @@
                 <div>
                   <h3 id="ict-title">Simulació 3D d'una ICT</h3>
                   <p id="ict-desc">Explora un edifici en 3D i la seva infraestructura comuna de telecomunicacions.</p>
+                </div>
+                <span class="arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="app app-fiber" href="/refraccio_fibra/" aria-labelledby="fiber-title" aria-describedby="fiber-desc">
+              <div class="card-top">
+                <span>LAB / 005</span>
+                <span class="tag">Fibra òptica</span>
+              </div>
+              <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                <rect x="24" y="15" width="412" height="65" rx="12" fill="#f4b4cb08" stroke="#f4b4cb25" />
+                <path class="ghost" d="M24 28H436 M24 67H436 M24 47.5H436" />
+                <path class="signal" pathLength="900" d="M0 47.5H24 C51 47.5 58 28 90 28 S125 67 160 67 S195 28 230 28 S265 67 300 67 S335 28 370 28 S405 47.5 436 47.5H460" />
+                <path class="ghost" d="M0 47.5H24 C51 47.5 58 67 90 67 S125 28 160 28 S195 67 230 67 S265 28 300 28 S335 67 370 67 S405 47.5 436 47.5H460" />
+              </svg>
+              <div class="card-bottom">
+                <div>
+                  <h3 id="fiber-title">Simulació de refracció a la fibra</h3>
+                  <p id="fiber-desc">Descobreix com viatja la llum per una fibra òptica i què passa quan es corba.</p>
                 </div>
                 <span class="arrow" aria-hidden="true">→</span>
               </div>
