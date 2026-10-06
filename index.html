@@ -474,6 +474,13 @@
     .app-fiber:hover .signal { filter:drop-shadow(0 0 5px #f4b4cb80); }
     .app-fiber .tag { border-color:#f4b4cb30; }
     .app-fiber .ripple { background:#f4b4cb35; }
+    .app-ac { --mint:#c4b5fd; }
+    .app-ac:hover { border-color:#c4b5fd80; }
+    .app-ac::before { background:radial-gradient(400px circle at var(--mx) var(--my),#c4b5fd16,transparent 70%); }
+    .app-ac .wave .ghost { stroke:#c4b5fd35; }
+    .app-ac:hover .signal { filter:drop-shadow(0 0 5px #c4b5fd80); }
+    .app-ac .tag { border-color:#c4b5fd30; }
+    .app-ac .ripple { background:#c4b5fd35; }
   </style>
 </head>
 
@@ -508,7 +515,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">05 / EXPLORA</span>
+          <span class="count">06 / EXPLORA</span>
         </div>
 
         <ul class="apps">
@@ -624,6 +631,28 @@
                 <div>
                   <h3 id="fiber-title">Simulació de refracció a la fibra</h3>
                   <p id="fiber-desc">Descobreix com viatja la llum per una fibra òptica i què passa quan es corba.</p>
+                </div>
+                <span class="arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="app app-ac" href="/circuits_ac_1/" aria-labelledby="ac-title" aria-describedby="ac-desc">
+              <div class="card-top">
+                <span>LAB / 006</span>
+                <span class="tag">Corrent altern</span>
+              </div>
+              <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                <path d="M0 47.5H460" stroke="#ffffff15" />
+                <path class="ghost" d="M0 47 C25 0 50 0 75 47 S125 94 150 47 S200 0 225 47 S275 94 300 47 S350 0 375 47 S425 94 460 47" />
+                <path class="signal" pathLength="900" d="M-25 47.5 C0 20 25 20 50 47.5 S100 75 125 47.5 S175 20 200 47.5 S250 75 275 47.5 S325 20 350 47.5 S400 75 425 47.5 S475 20 500 47.5" />
+                <path class="ghost" d="M37.5 12V88 M62.5 12V88" stroke-dasharray="3 4" />
+              </svg>
+              <div class="card-bottom">
+                <div>
+                  <h3 id="ac-title">Anàlisi de circuits AC</h3>
+                  <p id="ac-desc">Resol circuits RL, RC i RLC pas a pas: impedàncies, fasors, potències i factor de potència.</p>
                 </div>
                 <span class="arrow" aria-hidden="true">→</span>
               </div>
