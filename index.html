@@ -481,6 +481,13 @@
     .app-ac:hover .signal { filter:drop-shadow(0 0 5px #c4b5fd80); }
     .app-ac .tag { border-color:#c4b5fd30; }
     .app-ac .ripple { background:#c4b5fd35; }
+    .app-dc { --mint:#ffa48f; }
+    .app-dc:hover { border-color:#ffa48f80; }
+    .app-dc::before { background:radial-gradient(400px circle at var(--mx) var(--my),#ffa48f16,transparent 70%); }
+    .app-dc .wave .ghost { stroke:#ffa48f35; }
+    .app-dc:hover .signal { filter:drop-shadow(0 0 5px #ffa48f80); }
+    .app-dc .tag { border-color:#ffa48f30; }
+    .app-dc .ripple { background:#ffa48f35; }
   </style>
 </head>
 
@@ -515,7 +522,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">06 / EXPLORA</span>
+          <span class="count">07 / EXPLORA</span>
         </div>
 
         <ul class="apps">
@@ -653,6 +660,27 @@
                 <div>
                   <h3 id="ac-title">Anàlisi de circuits AC</h3>
                   <p id="ac-desc">Resol circuits RL, RC i RLC pas a pas: impedàncies, fasors, potències i factor de potència.</p>
+                </div>
+                <span class="arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a class="app app-dc" href="/circuits_cc_1/" aria-labelledby="dc-title" aria-describedby="dc-desc">
+              <div class="card-top">
+                <span>LAB / 007</span>
+                <span class="tag">Corrent continu</span>
+              </div>
+              <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                <path d="M0 75H460" stroke="#ffffff15" />
+                <path class="ghost" d="M0 75H120 M164 75H240 M284 75H360 M404 75H460 M120 69h44v12h-44z M240 69h44v12h-44z M360 69h44v12h-44z" />
+                <path class="signal" pathLength="900" d="M0 75 H60 C68 75 68 25 76 25 H460" />
+              </svg>
+              <div class="card-bottom">
+                <div>
+                  <h3 id="dc-title">Anàlisi de circuits CC</h3>
+                  <p id="dc-desc">Resol circuits mixtos de resistències pas a pas: resistència equivalent, tensions, intensitats i potències.</p>
                 </div>
                 <span class="arrow" aria-hidden="true">→</span>
               </div>
