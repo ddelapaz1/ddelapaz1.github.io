@@ -488,6 +488,13 @@
     .app-dc:hover .signal { filter:drop-shadow(0 0 5px #ffa48f80); }
     .app-dc .tag { border-color:#ffa48f30; }
     .app-dc .ripple { background:#ffa48f35; }
+    .app-mod { --mint:#6fe0c8; }
+    .app-mod:hover { border-color:#6fe0c880; }
+    .app-mod::before { background:radial-gradient(400px circle at var(--mx) var(--my),#6fe0c816,transparent 70%); }
+    .app-mod .wave .ghost { stroke:#6fe0c835; }
+    .app-mod:hover .signal { filter:drop-shadow(0 0 5px #6fe0c880); }
+    .app-mod .tag { border-color:#6fe0c830; }
+    .app-mod .ripple { background:#6fe0c835; }
   </style>
 </head>
 
@@ -522,7 +529,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">07 / EXPLORA</span>
+          <span class="count">08 / EXPLORA</span>
         </div>
 
         <ul class="apps">
@@ -681,6 +688,26 @@
                 <div>
                   <h3 id="dc-title">Anàlisi de circuits CC</h3>
                   <p id="dc-desc">Resol circuits mixtos de resistències pas a pas: resistència equivalent, tensions, intensitats i potències.</p>
+                </div>
+                <span class="arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="app app-mod" href="/modulacions_digitals_v2/" aria-labelledby="mod-title" aria-describedby="mod-desc">
+              <div class="card-top">
+                <span>LAB / 008</span>
+                <span class="tag">Modulació digital</span>
+              </div>
+              <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                <path d="M0 60H460" stroke="#ffffff15" />
+                <path class="ghost" d="M0 12 V12 H92 V26 H184 V12 H276 V12 H368 V26 H460 M92 8v80 M184 8v80 M276 8v80 M368 8v80" />
+                <path class="signal" pathLength="900" d="M0 60.0 L4 48.6 L8 40.5 L12 38.1 L16 42.0 L20 51.2 L24 63.0 L28 73.9 L32 80.7 L36 81.5 L40 76.1 L44 65.9 L48 54.1 L52 43.9 L56 38.5 L60 39.3 L64 46.1 L68 57.0 L72 68.8 L76 78.0 L80 81.9 L84 79.5 L88 71.4 L92 60.0 L96 71.4 L100 79.5 L104 81.9 L108 78.0 L112 68.8 L116 57.0 L120 46.1 L124 39.3 L128 38.5 L132 43.9 L136 54.1 L140 65.9 L144 76.1 L148 81.5 L152 80.7 L156 73.9 L160 63.0 L164 51.2 L168 42.0 L172 38.1 L176 40.5 L180 48.6 L184 60.0 L188 48.6 L192 40.5 L196 38.1 L200 42.0 L204 51.2 L208 63.0 L212 73.9 L216 80.7 L220 81.5 L224 76.1 L228 65.9 L232 54.1 L236 43.9 L240 38.5 L244 39.3 L248 46.1 L252 57.0 L256 68.8 L260 78.0 L264 81.9 L268 79.5 L272 71.4 L276 60.0 L280 48.6 L284 40.5 L288 38.1 L292 42.0 L296 51.2 L300 63.0 L304 73.9 L308 80.7 L312 81.5 L316 76.1 L320 65.9 L324 54.1 L328 43.9 L332 38.5 L336 39.3 L340 46.1 L344 57.0 L348 68.8 L352 78.0 L356 81.9 L360 79.5 L364 71.4 L368 60.0 L372 71.4 L376 79.5 L380 81.9 L384 78.0 L388 68.8 L392 57.0 L396 46.1 L400 39.3 L404 38.5 L408 43.9 L412 54.1 L416 65.9 L420 76.1 L424 81.5 L428 80.7 L432 73.9 L436 63.0 L440 51.2 L444 42.0 L448 38.1 L452 40.5 L456 48.6 L460 60.0" />
+              </svg>
+              <div class="card-bottom">
+                <div>
+                  <h3 id="mod-title">Laboratori de modulacions digitals</h3>
+                  <p id="mod-desc">Converteix bits en símbols i observa com modulen la portadora amb ASK, FSK, PSK i QAM: senyal, constel·lació i correspondència natural o Gray.</p>
                 </div>
                 <span class="arrow" aria-hidden="true">→</span>
               </div>
