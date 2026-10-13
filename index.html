@@ -495,6 +495,14 @@
     .app-mod:hover .signal { filter:drop-shadow(0 0 5px #6fe0c880); }
     .app-mod .tag { border-color:#6fe0c830; }
     .app-mod .ripple { background:#6fe0c835; }
+
+    .app-iq { --mint:#8ee8eb; }
+    .app-iq:hover { border-color:#8ee8eb80; }
+    .app-iq::before { background:radial-gradient(400px circle at var(--mx) var(--my),#8ee8eb16,transparent 70%); }
+    .app-iq .wave .ghost { stroke:#8ee8eb35; }
+    .app-iq:hover .signal { filter:drop-shadow(0 0 5px #8ee8eb80); }
+    .app-iq .tag { border-color:#8ee8eb30; }
+    .app-iq .ripple { background:#8ee8eb35; }
   </style>
 </head>
 
@@ -529,7 +537,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">08 / EXPLORA</span>
+          <span class="count">09 / EXPLORA</span>
         </div>
 
         <ul class="apps">
@@ -708,6 +716,31 @@
                 <div>
                   <h3 id="mod-title">Laboratori de modulacions digitals</h3>
                   <p id="mod-desc">Converteix bits en símbols i observa com modulen la portadora amb ASK, FSK, PSK i QAM: senyal, constel·lació i correspondència natural o Gray.</p>
+                </div>
+                <span class="arrow" aria-hidden="true">→</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="app app-iq" href="/contelacions_iq/" aria-labelledby="iq-title" aria-describedby="iq-desc">
+              <div class="card-top">
+                <span>LAB / 009</span>
+                <span class="tag">Constel·lacions · I/Q</span>
+              </div>
+              <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                <path d="M85 47H185 M135 3V89 M280 47H380 M330 3V89" stroke="#ffffff15" />
+                <circle class="ghost" cx="135" cy="47" r="32" />
+                <path class="signal" pathLength="900" d="M135 47L157 25" />
+                <g fill="#70e0cc"><circle cx="157" cy="25" r="4" /><circle cx="303" cy="20" r="3.5" /><circle cx="339" cy="20" r="3.5" /><circle cx="303" cy="56" r="3.5" /><circle cx="339" cy="56" r="3.5" /></g>
+                <g fill="#ffc075"><circle cx="113" cy="25" r="4" /><circle cx="321" cy="20" r="3.5" /><circle cx="357" cy="20" r="3.5" /><circle cx="321" cy="56" r="3.5" /><circle cx="357" cy="56" r="3.5" /></g>
+                <g fill="#c2a0ff"><circle cx="113" cy="69" r="4" /><circle cx="303" cy="38" r="3.5" /><circle cx="339" cy="38" r="3.5" /><circle cx="303" cy="74" r="3.5" /><circle cx="339" cy="74" r="3.5" /></g>
+                <g fill="#ff91ae"><circle cx="157" cy="69" r="4" /><circle cx="321" cy="38" r="3.5" /><circle cx="357" cy="38" r="3.5" /><circle cx="321" cy="74" r="3.5" /><circle cx="357" cy="74" r="3.5" /></g>
+                <path class="ghost" d="M148 20l5 6 M160 28l6-3 M301 29l5 6 M344 60l6-4" stroke-dasharray="2 3" />
+              </svg>
+              <div class="card-bottom">
+                <div>
+                  <h3 id="iq-title"><small>Radiocomunicacions:</small>Constel·lacions I/Q</h3>
+                  <p id="iq-desc">Compara QPSK, 8PSK, 16QAM i 64QAM i observa com el soroll afecta els símbols i les zones de decisió.</p>
                 </div>
                 <span class="arrow" aria-hidden="true">→</span>
               </div>
