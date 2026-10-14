@@ -102,6 +102,32 @@
       text-transform: uppercase;
     }
 
+    .header-end {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .fs-btn {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 10px;
+      border: 1px solid #ffffff25;
+      background: #ffffff0a;
+      color: var(--mint);
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+
+    .fs-btn:hover { background: #ffffff18; border-color: #ffffff45; }
+    .fs-btn:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+    .fs-btn svg { width: 22px; height: 22px; }
+    .fs-btn[hidden], .fs-btn .fs-off, .fs-btn.is-fs .fs-on { display: none; }
+    .fs-btn.is-fs .fs-off { display: block; }
+
     .hero {
       padding: 78px 0 64px;
       position: relative;
@@ -516,7 +542,13 @@
         <span class="brand-icon" aria-hidden="true">↗</span>
         ddelapazhub
       </div>
-      <span class="header-note">Un espai per experimentar</span>
+      <div class="header-end">
+        <span class="header-note">Un espai per experimentar</span>
+        <button type="button" id="btn-fs" class="fs-btn" aria-label="Pantalla completa" title="Pantalla completa (F)" hidden>
+          <svg class="fs-on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5V3h4.5M12.5 3H17v4.5M17 12.5V17h-4.5M7.5 17H3v-4.5"/></svg>
+          <svg class="fs-off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 3v4.5H3M17 7.5h-4.5V3M12.5 17v-4.5H17M3 12.5h4.5V17"/></svg>
+        </button>
+      </div>
     </header>
 
     <main>
@@ -817,6 +849,35 @@
         }, 380);
       });
     });
+
+    // pantalla completa (pissarra digital)
+    const fsBtn = document.getElementById('btn-fs');
+    const root = document.documentElement;
+    if (root.requestFullscreen || root.webkitRequestFullscreen) {
+      const fsEl = () =>
+        document.fullscreenElement || document.webkitFullscreenElement;
+      const toggleFS = () => {
+        if (fsEl()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        else (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+      };
+      const syncFS = () => {
+        const on = !!fsEl();
+        fsBtn.classList.toggle('is-fs', on);
+        fsBtn.setAttribute('aria-label', on ? 'Surt de la pantalla completa' : 'Pantalla completa');
+        fsBtn.title = on ? 'Surt de la pantalla completa (F o Esc)' : 'Pantalla completa (F)';
+      };
+
+      fsBtn.hidden = false;
+      fsBtn.addEventListener('click', toggleFS);
+      document.addEventListener('fullscreenchange', syncFS);
+      document.addEventListener('webkitfullscreenchange', syncFS);
+      document.addEventListener('keydown', event => {
+        if (
+          (event.key === 'f' || event.key === 'F') &&
+          !event.ctrlKey && !event.metaKey && !event.altKey
+        ) toggleFS();
+      });
+    }
   </script>
 </body>
 </html>
