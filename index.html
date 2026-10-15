@@ -636,6 +636,13 @@
     .app-mod .tag { border-color:#6fe0c830; }
     .app-mod .ripple { background:#6fe0c835; }
 
+    .app-pf { --mint:#b8f08a; }
+    .app-pf:hover { border-color:#b8f08a80; }
+    .app-pf::before { background:radial-gradient(400px circle at var(--mx) var(--my),#b8f08a16,transparent 70%); }
+    .app-pf .wave .ghost { stroke:#b8f08a35; }
+    .app-pf:hover .signal { filter:drop-shadow(0 0 5px #b8f08a80); }
+    .app-pf .tag { border-color:#b8f08a30; }
+    .app-pf .ripple { background:#b8f08a35; }
     .app-iq { --mint:#8ee8eb; }
     .app-iq:hover { border-color:#8ee8eb80; }
     .app-iq::before { background:radial-gradient(400px circle at var(--mx) var(--my),#8ee8eb16,transparent 70%); }
@@ -683,7 +690,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">03 MÒDULS / 10 APPS</span>
+          <span class="count">03 MÒDULS / 11 APPS</span>
         </div>
 
         <!-- Cada mòdul és una carpeta desplegable: afegeix les targetes noves dins del seu <ul class="apps">. -->
@@ -884,7 +891,7 @@
                 <span class="module-code">EEB0 · Mòdul 0962</span>
                 <span class="module-name">Sistemes de potència</span>
               </span>
-              <span class="module-count">3 aplicacions</span>
+              <span class="module-count">4 aplicacions</span>
               <svg class="module-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
             </summary>
 
@@ -947,6 +954,27 @@
                     <div>
                       <h3 id="rx-title">Receptors en corrent altern</h3>
                       <p id="rx-desc">Laboratori de R, L, C i circuits RLC sèrie i paral·lel: oscil·loscopi, fasors, potències i ressonància.</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a class="app app-pf" href="/correccio_pf/" aria-labelledby="pf-title" aria-describedby="pf-desc">
+                  <div class="card-top">
+                    <span>LAB / 011</span>
+                    <span class="tag">Factor de potència</span>
+                  </div>
+                  <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                    <path d="M0 47.5H460" stroke="#ffffff15" />
+                    <path class="ghost" d="M-20 47.5 C10 2 40 2 70 47.5 S130 93 160 47.5 S220 2 250 47.5 S310 93 340 47.5 S400 2 430 47.5 S490 93 520 47.5" />
+                    <path class="signal" pathLength="900" d="M-45 47.5 C-15 22 15 22 45 47.5 S105 73 135 47.5 S195 22 225 47.5 S285 73 315 47.5 S375 22 405 47.5 S465 73 495 47.5" />
+                  </svg>
+                  <div class="card-bottom">
+                    <div>
+                      <h3 id="pf-title">Compensació de factor de potència</h3>
+                      <p id="pf-desc">Compensa càrregues RL i RLC amb condensadors: calcula Qc i C, i observa com canvien Q, S, cos φ i el corrent de línia.</p>
                     </div>
                     <span class="arrow" aria-hidden="true">→</span>
                   </div>
