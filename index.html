@@ -291,12 +291,15 @@
     }
 
     .module[open] .module-chevron { transform: rotate(180deg); }
+    .module.is-closing .module-chevron { transform: none; }
 
     .module .apps { padding: 4px 26px 26px; }
-    .module[open] .apps { animation: unfold .35s ease both; }
+    .module .apps { transition: opacity .3s ease, transform .3s ease; }
+    .module.is-closing .apps { opacity: 0; transform: translateY(-8px); }
+    .module[open]:not(.is-closing) .apps { animation: unfold .45s ease both; }
 
     @keyframes unfold {
-      from { opacity: 0; transform: translateY(-8px); }
+      from { opacity: 0; transform: translateY(-10px); }
     }
 
     .module-ict { --accent: #f3d68a; }
@@ -991,6 +994,43 @@
           ripple.remove();
           window.location.assign(card.href);
         }, 380);
+      });
+    });
+
+    // carpetes dels mòduls: despleguen i pleguen amb una animació d'alçada
+    document.querySelectorAll('details.module').forEach(folder => {
+      const summary = folder.querySelector('summary');
+      let anim = null;
+
+      summary.addEventListener('click', event => {
+        if (reducedMotion.matches || !folder.animate) return;
+        event.preventDefault();
+
+        const closing = folder.open && !folder.classList.contains('is-closing');
+        const start = folder.offsetHeight;
+        if (anim) anim.cancel();
+
+        let end;
+        if (closing) {
+          folder.classList.add('is-closing');
+          end = summary.offsetHeight + folder.offsetHeight - folder.clientHeight;
+        } else {
+          folder.classList.remove('is-closing');
+          folder.open = true;
+          end = folder.offsetHeight;
+        }
+
+        folder.style.overflow = 'hidden';
+        anim = folder.animate(
+          { height: [`${start}px`, `${end}px`] },
+          { duration: closing ? 380 : 480, easing: 'cubic-bezier(.25, .8, .25, 1)' }
+        );
+        anim.onfinish = () => {
+          if (closing) folder.open = false;
+          folder.classList.remove('is-closing');
+          folder.style.overflow = '';
+          anim = null;
+        };
       });
     });
 
