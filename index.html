@@ -607,6 +607,14 @@
     .app-rx .tag { border-color:#7dd3fc30; }
     .app-rx .ripple { background:#7dd3fc35; }
 
+    .app-harm { --mint:#fdba74; }
+    .app-harm:hover { border-color:#fdba7480; }
+    .app-harm::before { background:radial-gradient(400px circle at var(--mx) var(--my),#fdba7416,transparent 70%); }
+    .app-harm .wave .ghost { stroke:#fdba7435; }
+    .app-harm:hover .signal { filter:drop-shadow(0 0 5px #fdba7480); }
+    .app-harm .tag { border-color:#fdba7430; }
+    .app-harm .ripple { background:#fdba7435; }
+
     .app-fiber { --mint:#f4b4cb; }
     .app-fiber:hover { border-color:#f4b4cb80; }
     .app-fiber::before { background:radial-gradient(400px circle at var(--mx) var(--my),#f4b4cb16,transparent 70%); }
@@ -690,7 +698,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">03 MÒDULS / 11 APPS</span>
+          <span class="count">03 MÒDULS / 12 APPS</span>
         </div>
 
         <!-- Cada mòdul és una carpeta desplegable: afegeix les targetes noves dins del seu <ul class="apps">. -->
@@ -891,7 +899,7 @@
                 <span class="module-code">EEB0 · Mòdul 0962</span>
                 <span class="module-name">Sistemes de potència</span>
               </span>
-              <span class="module-count">4 aplicacions</span>
+              <span class="module-count">5 aplicacions</span>
               <svg class="module-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
             </summary>
 
@@ -975,6 +983,27 @@
                     <div>
                       <h3 id="pf-title">Compensació de factor de potència</h3>
                       <p id="pf-desc">Compensa càrregues RL i RLC amb condensadors: calcula Qc i C, i observa com canvien Q, S, cos φ i el corrent de línia.</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a class="app app-harm" href="/harmonics/" aria-labelledby="harm-title" aria-describedby="harm-desc">
+                  <div class="card-top">
+                    <span>LAB / 012</span>
+                    <span class="tag">Qualitat de xarxa</span>
+                  </div>
+                  <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                    <path d="M0 47.5H460" stroke="#ffffff15" />
+                    <path class="ghost" d="M0 47.5 C30 5 60 5 90 47.5 S150 90 180 47.5 S240 5 270 47.5 S330 90 360 47.5 S420 5 450 47.5" />
+                    <path class="signal" pathLength="900" d="M0 47.5 H40 C50 47.5 52 8 60 8 S70 47.5 80 47.5 H130 C140 47.5 142 87 150 87 S160 47.5 170 47.5 H220 C230 47.5 232 8 240 8 S250 47.5 260 47.5 H310 C320 47.5 322 87 330 87 S340 47.5 350 47.5 H400 C410 47.5 412 8 420 8 S430 47.5 440 47.5 H460" />
+                  </svg>
+                  <div class="card-bottom">
+                    <div>
+                      <h3 id="harm-title">Harmònics: causes i efectes</h3>
+                      <p id="harm-desc">Què són els harmònics, quines càrregues els generen, què provoquen a la instal·lació i com es filtren.</p>
                     </div>
                     <span class="arrow" aria-hidden="true">→</span>
                   </div>
