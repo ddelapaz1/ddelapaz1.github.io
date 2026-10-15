@@ -599,6 +599,14 @@
     .app-ict .tag { border-color:#f3d68a30; }
     .app-ict .ripple { background:#f3d68a35; }
 
+    .app-rx { --mint:#7dd3fc; }
+    .app-rx:hover { border-color:#7dd3fc80; }
+    .app-rx::before { background:radial-gradient(400px circle at var(--mx) var(--my),#7dd3fc16,transparent 70%); }
+    .app-rx .wave .ghost { stroke:#7dd3fc35; }
+    .app-rx:hover .signal { filter:drop-shadow(0 0 5px #7dd3fc80); }
+    .app-rx .tag { border-color:#7dd3fc30; }
+    .app-rx .ripple { background:#7dd3fc35; }
+
     .app-fiber { --mint:#f4b4cb; }
     .app-fiber:hover { border-color:#f4b4cb80; }
     .app-fiber::before { background:radial-gradient(400px circle at var(--mx) var(--my),#f4b4cb16,transparent 70%); }
@@ -675,7 +683,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">03 MÒDULS / 09 APPS</span>
+          <span class="count">03 MÒDULS / 10 APPS</span>
         </div>
 
         <!-- Cada mòdul és una carpeta desplegable: afegeix les targetes noves dins del seu <ul class="apps">. -->
@@ -876,7 +884,7 @@
                 <span class="module-code">EEB0 · Mòdul 0962</span>
                 <span class="module-name">Sistemes de potència</span>
               </span>
-              <span class="module-count">2 aplicacions</span>
+              <span class="module-count">3 aplicacions</span>
               <svg class="module-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
             </summary>
 
@@ -918,6 +926,27 @@
                     <div>
                       <h3 id="dc-title">Anàlisi de circuits CC</h3>
                       <p id="dc-desc">Resol circuits mixtos de resistències pas a pas: resistència equivalent, tensions, intensitats i potències.</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a class="app app-rx" href="/receptors_ac/" aria-labelledby="rx-title" aria-describedby="rx-desc">
+                  <div class="card-top">
+                    <span>LAB / 010</span>
+                    <span class="tag">Corrent altern</span>
+                  </div>
+                  <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                    <path d="M0 47.5H460" stroke="#ffffff15" />
+                    <path class="ghost" d="M0 47.5 C30 5 60 5 90 47.5 S150 90 180 47.5 S240 5 270 47.5 S330 90 360 47.5 S420 5 450 47.5" />
+                    <path class="signal" pathLength="900" d="M-45 47.5 C-15 15 15 15 45 47.5 S105 80 135 47.5 S195 15 225 47.5 S285 80 315 47.5 S375 15 405 47.5 S465 80 495 47.5" />
+                  </svg>
+                  <div class="card-bottom">
+                    <div>
+                      <h3 id="rx-title">Receptors en corrent altern</h3>
+                      <p id="rx-desc">Laboratori de R, L, C i circuits RLC sèrie i paral·lel: oscil·loscopi, fasors, potències i ressonància.</p>
                     </div>
                     <span class="arrow" aria-hidden="true">→</span>
                   </div>
