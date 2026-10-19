@@ -622,6 +622,13 @@
     .app-fiber:hover .signal { filter:drop-shadow(0 0 5px #f4b4cb80); }
     .app-fiber .tag { border-color:#f4b4cb30; }
     .app-fiber .ripple { background:#f4b4cb35; }
+    .app-quiz { --mint:#9fd0ff; }
+    .app-quiz:hover { border-color:#9fd0ff80; }
+    .app-quiz::before { background:radial-gradient(400px circle at var(--mx) var(--my),#9fd0ff16,transparent 70%); }
+    .app-quiz .wave .ghost { stroke:#9fd0ff35; }
+    .app-quiz:hover .signal { filter:drop-shadow(0 0 5px #9fd0ff80); }
+    .app-quiz .tag { border-color:#9fd0ff30; }
+    .app-quiz .ripple { background:#9fd0ff35; }
     .app-ac { --mint:#c4b5fd; }
     .app-ac:hover { border-color:#c4b5fd80; }
     .app-ac::before { background:radial-gradient(400px circle at var(--mx) var(--my),#c4b5fd16,transparent 70%); }
@@ -698,7 +705,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">03 MÒDULS / 13 APPS</span>
+          <span class="count">03 MÒDULS / 14 APPS</span>
         </div>
 
         <!-- Cada mòdul és una carpeta desplegable: afegeix les targetes noves dins del seu <ul class="apps">. -->
@@ -843,7 +850,7 @@
                 <span class="module-code">EE10 · Mòdul 0237</span>
                 <span class="module-name">ICT</span>
               </span>
-              <span class="module-count">2 aplicacions</span>
+              <span class="module-count">3 aplicacions</span>
               <svg class="module-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
             </summary>
 
@@ -885,6 +892,26 @@
                     <div>
                       <h3 id="fiber-title">Simulació de refracció a la fibra</h3>
                       <p id="fiber-desc">Descobreix com viatja la llum per una fibra òptica i què passa quan es corba.</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a class="app app-quiz" href="/questionaris_ict/" aria-labelledby="quiz-title" aria-describedby="quiz-desc">
+                  <div class="card-top">
+                    <span>LAB / 014</span>
+                    <span class="tag">Qüestionari</span>
+                  </div>
+                  <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                    <path class="ghost" d="M150 14H186V32H150Z M150 39H186V57H150Z M150 64H186V82H150Z M200 23H320 M200 48H300 M200 73H330" />
+                    <path class="signal" pathLength="900" d="M156 23L165 30L181 13 M156 48L165 55L181 38 M156 64L180 82 M180 64L156 82" />
+                  </svg>
+                  <div class="card-bottom">
+                    <div>
+                      <h3 id="quiz-title">Qüestionaris ICT</h3>
+                      <p id="quiz-desc">Posa't a prova amb retroacció immediata a cada pregunta i la nota final. Tema 1.1: definició de les ICT i normativa.</p>
                     </div>
                     <span class="arrow" aria-hidden="true">→</span>
                   </div>
