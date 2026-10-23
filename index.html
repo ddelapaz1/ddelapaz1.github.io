@@ -615,6 +615,14 @@
     .app-harm .tag { border-color:#fdba7430; }
     .app-harm .ripple { background:#fdba7435; }
 
+    .app-meas { --mint:#fbbf24; }
+    .app-meas:hover { border-color:#fbbf2480; }
+    .app-meas::before { background:radial-gradient(400px circle at var(--mx) var(--my),#fbbf2416,transparent 70%); }
+    .app-meas .wave .ghost { stroke:#fbbf2435; }
+    .app-meas:hover .signal { filter:drop-shadow(0 0 5px #fbbf2480); }
+    .app-meas .tag { border-color:#fbbf2430; }
+    .app-meas .ripple { background:#fbbf2435; }
+
     .app-fiber { --mint:#f4b4cb; }
     .app-fiber:hover { border-color:#f4b4cb80; }
     .app-fiber::before { background:radial-gradient(400px circle at var(--mx) var(--my),#f4b4cb16,transparent 70%); }
@@ -705,7 +713,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">03 MÒDULS / 14 APPS</span>
+          <span class="count">03 MÒDULS / 15 APPS</span>
         </div>
 
         <!-- Cada mòdul és una carpeta desplegable: afegeix les targetes noves dins del seu <ul class="apps">. -->
@@ -926,7 +934,7 @@
                 <span class="module-code">EEB0 · Mòdul 0962</span>
                 <span class="module-name">Sistemes de potència</span>
               </span>
-              <span class="module-count">6 aplicacions</span>
+              <span class="module-count">7 aplicacions</span>
               <svg class="module-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
             </summary>
 
@@ -1052,6 +1060,27 @@
                     <div>
                       <h3 id="harm2-title"><small>Versió pràctica v2:</small>Harmònics a planta</h3>
                       <p id="harm2-desc">Simulador de quadre elèctric amb cèl·lula robòtica, comparador de pinces TRMS, avaries al neutre i solucions.</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a class="app app-meas" href="/mesures_alterna/" aria-labelledby="meas-title" aria-describedby="meas-desc">
+                  <div class="card-top">
+                    <span>LAB / 015</span>
+                    <span class="tag">Multímetre</span>
+                  </div>
+                  <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                    <path d="M0 47.5H460" stroke="#ffffff15" />
+                    <path class="ghost" d="M0 47.5 C30 5 60 5 90 47.5 S150 90 180 47.5 S240 5 270 47.5 S330 90 360 47.5 S420 5 450 47.5" />
+                    <path class="signal" pathLength="900" d="M-25 47.5 C5 20 35 20 65 47.5 S125 75 155 47.5 S215 20 245 47.5 S305 75 335 47.5 S395 20 425 47.5 S485 75 515 47.5" />
+                  </svg>
+                  <div class="card-bottom">
+                    <div>
+                      <h3 id="meas-title">Mesures en corrent altern</h3>
+                      <p id="meas-desc">Circuits RLC sèrie, paral·lel i mixt: tria dos punts i mesura tensió, intensitat i potències amb un multímetre virtual.</p>
                     </div>
                     <span class="arrow" aria-hidden="true">→</span>
                   </div>
