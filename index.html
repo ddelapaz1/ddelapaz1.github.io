@@ -615,6 +615,14 @@
     .app-harm .tag { border-color:#fdba7430; }
     .app-harm .ripple { background:#fdba7435; }
 
+    .app-rad { --mint:#f0abfc; }
+    .app-rad:hover { border-color:#f0abfc80; }
+    .app-rad::before { background:radial-gradient(400px circle at var(--mx) var(--my),#f0abfc16,transparent 70%); }
+    .app-rad .wave .ghost { stroke:#f0abfc35; }
+    .app-rad:hover .signal { filter:drop-shadow(0 0 5px #f0abfc80); }
+    .app-rad .tag { border-color:#f0abfc30; }
+    .app-rad .ripple { background:#f0abfc35; }
+
     .app-meas { --mint:#fbbf24; }
     .app-meas:hover { border-color:#fbbf2480; }
     .app-meas::before { background:radial-gradient(400px circle at var(--mx) var(--my),#fbbf2416,transparent 70%); }
@@ -713,7 +721,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">03 MÒDULS / 15 APPS</span>
+          <span class="count">03 MÒDULS / 16 APPS</span>
         </div>
 
         <!-- Cada mòdul és una carpeta desplegable: afegeix les targetes noves dins del seu <ul class="apps">. -->
@@ -725,7 +733,7 @@
                 <span class="module-code">EE30 · Mòdul 0365</span>
                 <span class="module-name">Radiocomunicacions</span>
               </span>
-              <span class="module-count">5 aplicacions</span>
+              <span class="module-count">6 aplicacions</span>
               <svg class="module-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
             </summary>
 
@@ -844,6 +852,26 @@
                     <div>
                       <h3 id="iq-title"><small>Radiocomunicacions:</small>Constel·lacions I/Q</h3>
                       <p id="iq-desc">Compara QPSK, 8PSK, 16QAM i 64QAM i observa com el soroll afecta els símbols i les zones de decisió.</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="app app-rad" href="/0365-artifacts/diagrames-radiacio-antenes-ca.html" aria-labelledby="rad-title" aria-describedby="rad-desc">
+                  <div class="card-top">
+                    <span>LAB / 016</span>
+                    <span class="tag">Antenes · 3D</span>
+                  </div>
+                  <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                    <path d="M70 47.5H170 M120 3V92 M250 47.5H350 M300 3V92" stroke="#ffffff15" />
+                    <path class="ghost" d="M106 47.5a14 14 0 1 0 28 0a14 14 0 1 0 -28 0 M92 47.5a28 28 0 1 0 56 0a28 28 0 1 0 -56 0 M78 47.5a42 42 0 1 0 84 0a42 42 0 1 0 -84 0 M286 47.5a14 14 0 1 0 28 0a14 14 0 1 0 -28 0 M272 47.5a28 28 0 1 0 56 0a28 28 0 1 0 -56 0 M258 47.5a42 42 0 1 0 84 0a42 42 0 1 0 -84 0" />
+                    <path class="signal" pathLength="900" d="M160 48 L160 45 L159 42 L159 40 L158 37 L157 35 L155 33 L154 31 L152 29 L150 27 L148 26 L146 25 L144 24 L141 23 L139 23 L136 23 L134 23 L131 24 L129 26 L127 27 L125 30 L123 34 L121 39 L120 48 L119 39 L117 34 L115 30 L113 27 L111 26 L109 24 L106 23 L104 23 L101 23 L99 23 L96 24 L94 25 L92 26 L90 27 L88 29 L86 31 L85 33 L83 35 L82 37 L81 40 L81 42 L80 45 L80 47 L80 50 L81 53 L81 55 L82 58 L83 60 L85 62 L86 64 L88 66 L90 68 L92 69 L94 70 L96 71 L99 72 L101 72 L104 72 L106 72 L109 71 L111 69 L113 68 L115 65 L117 61 L119 56 L120 48 L121 56 L123 61 L125 65 L127 68 L129 69 L131 71 L134 72 L136 72 L139 72 L141 72 L144 71 L146 70 L148 69 L150 68 L152 66 L154 64 L155 62 L157 60 L158 58 L159 55 L159 53 L160 50Z M342 48 L342 46 L342 45 L342 43 L341 42 L341 40 L341 39 L340 38 L340 36 L339 35 L338 34 L337 32 L336 31 L335 30 L334 29 L333 28 L332 28 L330 27 L329 27 L327 26 L326 26 L324 26 L322 26 L320 26 L318 27 L317 28 L315 28 L313 29 L312 30 L311 29 L311 28 L310 26 L310 25 L310 24 L309 23 L308 22 L307 22 L307 21 L306 21 L305 21 L304 22 L303 22 L302 23 L301 25 L300 27 L299 29 L299 31 L299 34 L299 38 L299 41 L299 42 L298 40 L297 38 L296 36 L295 35 L294 34 L293 33 L292 33 L291 33 L291 34 L291 35 L291 36 L291 37 L291 38 L292 39 L293 41 L294 42 L296 44 L298 46 L300 48 L299 47 L298 47 L298 48 L299 48 L300 48 L298 49 L296 51 L294 53 L293 54 L292 56 L291 57 L291 58 L291 59 L291 60 L291 61 L291 62 L292 62 L293 62 L294 61 L295 60 L296 59 L297 57 L298 55 L299 53 L299 54 L299 57 L299 61 L299 64 L299 66 L300 68 L301 70 L302 72 L303 73 L304 73 L305 74 L306 74 L307 74 L307 73 L308 73 L309 72 L310 71 L310 70 L310 69 L311 67 L311 66 L312 65 L313 66 L315 67 L317 67 L318 68 L320 69 L322 69 L324 69 L326 69 L327 69 L329 68 L330 68 L332 67 L333 67 L334 66 L335 65 L336 64 L337 63 L338 61 L339 60 L340 59 L340 57 L341 56 L341 55 L341 53 L342 52 L342 50 L342 49Z" />
+                  </svg>
+                  <div class="card-bottom">
+                    <div>
+                      <h3 id="rad-title">Diagrames de radiació</h3>
+                      <p id="rad-desc">Diagrames 3D i talls polars d’antenes isotròpica, dipol, Yagi-Uda, sectorial, parabòlica, bilobular i botzina: guany, amplada de feix i relació davant/darrere.</p>
                     </div>
                     <span class="arrow" aria-hidden="true">→</span>
                   </div>
