@@ -681,6 +681,13 @@
     .app-iq:hover .signal { filter:drop-shadow(0 0 5px #8ee8eb80); }
     .app-iq .tag { border-color:#8ee8eb30; }
     .app-iq .ripple { background:#8ee8eb35; }
+    .app-p2p { --mint:#7dd3fc; }
+    .app-p2p:hover { border-color:#7dd3fc80; }
+    .app-p2p::before { background:radial-gradient(400px circle at var(--mx) var(--my),#7dd3fc16,transparent 70%); }
+    .app-p2p .wave .ghost { stroke:#7dd3fc35; }
+    .app-p2p:hover .signal { filter:drop-shadow(0 0 5px #7dd3fc80); }
+    .app-p2p .tag { border-color:#7dd3fc30; }
+    .app-p2p .ripple { background:#7dd3fc35; }
   </style>
 </head>
 
@@ -733,7 +740,7 @@
                 <span class="module-code">EE30 · Mòdul 0365</span>
                 <span class="module-name">Radiocomunicacions</span>
               </span>
-              <span class="module-count">6 aplicacions</span>
+              <span class="module-count">7 aplicacions</span>
               <svg class="module-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
             </summary>
 
@@ -872,6 +879,28 @@
                     <div>
                       <h3 id="rad-title">Diagrames de radiació</h3>
                       <p id="rad-desc">Diagrames 3D i talls polars d’antenes isotròpica, dipol, Yagi-Uda, sectorial, parabòlica, bilobular i botzina: guany, amplada de feix i relació davant/darrere.</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="app app-p2p" href="/calcul_puntapunt/" aria-labelledby="p2p-title" aria-describedby="p2p-desc">
+                  <div class="card-top">
+                    <span>LAB / 017</span>
+                    <span class="tag">Microones · Fresnel</span>
+                  </div>
+                  <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                    <path d="M0 88H460" stroke="#ffffff15" />
+                    <path class="ghost" d="M0 88 L30 80 L70 84 L120 66 L170 72 L215 46 L250 58 L300 70 L350 64 L400 78 L430 76 L460 88" />
+                    <path class="ghost" d="M42 20 C150 -6 310 -6 418 20 C310 46 150 46 42 20Z" stroke-dasharray="4 5" />
+                    <path class="ghost" d="M36 86V24 M48 86V24 M412 86V24 M424 86V24" />
+                    <path class="signal" pathLength="900" d="M42 20H418 M30 20h24 M406 20h24" />
+                  </svg>
+                  <div class="card-bottom">
+                    <div>
+                      <h3 id="p2p-title"><small>Radiocomunicacions:</small>Enllaç punt a punt</h3>
+                      <p id="p2p-desc">Simulador d’enllaços de microones: balanç de potències, orientació d’antenes i diagrames de radiació, i perfil del terreny sobre un mapa amb la visió directa i la 1a zona de Fresnel.</p>
                     </div>
                     <span class="arrow" aria-hidden="true">→</span>
                   </div>
