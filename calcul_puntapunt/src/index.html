@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ca" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enllaç punt a punt</title>
+  <meta name="description" content="Simulador educatiu d'enllaços de microones punt a punt: balanç de potències, orientació d'antenes, visibilitat directa i zona de Fresnel sobre un perfil real del terreny. Mòdul 0365 – Radiocomunicacions.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1220'/%3E%3Cpath d='M9 22a9 9 0 0 1 0-12M13 19a5 5 0 0 1 0-6M23 10a9 9 0 0 1 0 12M19 13a5 5 0 0 1 0 6' stroke='%2322d3ee' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M9 22a9 9 0 0 1 0-12M13 19a5 5 0 0 1 0-6M23 10a9 9 0 0 1 0 12M19 13a5 5 0 0 1 0 6"/></svg>
+      <div>
+        <h1>Enllaç punt a punt</h1>
+        <p>Simulador d'enllaços de microones · Mòdul 0365</p>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Simuladors">
+      <button type="button" role="tab" data-tab="balanc" class="tab on"><span class="tab-num">1</span>Balanç de potències</button>
+      <button type="button" role="tab" data-tab="antenes" class="tab"><span class="tab-num">2</span>Antenes i orientació</button>
+      <button type="button" role="tab" data-tab="fresnel" class="tab"><span class="tab-num">3</span>Visibilitat i Fresnel</button>
+    </nav>
+    <div class="top-actions">
+      <label class="select-wrap" title="Carrega una configuració didàctica">
+        <span class="sr-only">Escenari educatiu</span>
+        <select id="scenario-select" class="select">
+          <option value="">Escenaris educatius…</option>
+        </select>
+      </label>
+      <button type="button" id="btn-reset" class="btn ghost" title="Restableix la configuració inicial">Restablir</button>
+      <label class="switch" title="Mostra explicacions sobre els esquemes">
+        <input type="checkbox" id="explain-toggle" class="switch-input">
+        <span class="switch-track"></span><span>Mode explicació</span>
+      </label>
+      <button type="button" id="btn-theme" class="icon-btn" aria-label="Canvia el tema">
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button type="button" id="btn-about" class="icon-btn" aria-label="Sobre el model i les seves limitacions">
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="scenario-banner" class="banner" hidden>
+    <div class="banner-body">
+      <strong id="banner-title"></strong>
+      <p id="banner-text"></p>
+      <p class="banner-observe"><span>Què has d'observar:</span> <span id="banner-observe"></span></p>
+    </div>
+    <button type="button" id="banner-close" class="icon-btn" aria-label="Tanca l'escenari">×</button>
+  </div>
+
+  <main>
+    <!-- SIMULADOR 1 -->
+    <section id="tab-balanc" class="layout" role="tabpanel" aria-label="Balanç de potències">
+      <aside class="side" id="side-balanc" aria-label="Paràmetres de l'enllaç"></aside>
+      <div class="main-area">
+        <div class="card viz-card" id="link-card">
+          <div class="card-head">
+            <h2>Esquema de l'enllaç i nivell del senyal</h2>
+            <div class="legend">
+              <span class="lg lg-level">Nivell absolut (dBm)</span>
+              <span class="lg lg-gain">Guany (dBi)</span>
+              <span class="lg lg-loss">Pèrdua (dB)</span>
+              <span class="lg lg-mis">Desalineació (dB)</span>
+              <span class="lg lg-obs">Obstacles (dB)</span>
+            </div>
+          </div>
+          <p class="explain-hint">Mode explicació actiu: fes clic sobre qualsevol element de l'esquema o sobre el diagrama de nivells.</p>
+          <div id="link-svg-wrap" class="svg-wrap"></div>
+        </div>
+        <div class="bottom-grid">
+          <div class="card" id="results-card"></div>
+          <div class="card chart-card">
+            <div class="card-head">
+              <h2>Gràfiques</h2>
+              <div class="segmented" id="chart-tabs"></div>
+            </div>
+            <div id="chart-wrap" class="svg-wrap"></div>
+            <div class="legend" id="wf-legend">
+              <span class="lg lg-level">Nivell (dBm)</span>
+              <span class="lg lg-gain">Guany</span>
+              <span class="lg lg-loss">Pèrdua</span>
+              <span class="lg lg-mis">Desalineació</span>
+              <span class="lg lg-obs">Obstacles</span>
+              <span class="lg lg-sens">Sensibilitat RX</span>
+            </div>
+          </div>
+          <div class="card" id="compare-1"></div>
+        </div>
+        <details class="card math-card">
+          <summary><h2>Explicació matemàtica pas a pas</h2><span class="summary-hint">Mostra la substitució dels valors actuals</span></summary>
+          <div id="math-body"></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- SIMULADOR 2 -->
+    <section id="tab-antenes" class="layout" role="tabpanel" aria-label="Antenes i orientació" hidden>
+      <aside class="side" id="side-antenes" aria-label="Antenes i orientació"></aside>
+      <div class="main-area">
+        <div class="top-grid">
+          <div class="card viz-card">
+            <div class="card-head">
+              <h2>Vista en planta (azimut)</h2>
+              <button type="button" id="btn-align-2" class="btn primary">Alinear antenes</button>
+            </div>
+            <p class="explain-note">Cada antena es representa amb el seu feix: el sector semitransparent delimita l'ample de feix a −3 dB i la corba és el diagrama de radiació (escala lineal de camp). Si l'altre extrem queda fora del lòbul principal, el guany efectiu disminueix.</p>
+            <div id="plan-wrap" class="svg-wrap"></div>
+          </div>
+          <div class="col-stack">
+          <div class="card viz-card">
+            <div class="card-head"><h2>Vista lateral (elevació)</h2></div>
+            <p class="explain-note">Si les antenes estan a altures diferents, la línia de l'enllaç està inclinada i cal ajustar l'elevació. Arrossega la maneta de cada antena per inclinar-la.</p>
+            <div id="sideview-wrap" class="svg-wrap"></div>
+            <div class="polar-explain">
+              <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
+              <p>El guany màxim d'una antena s'obté en la direcció de màxima radiació. Quan l'antena s'orienta incorrectament, el guany en la direcció de l'altre extrem disminueix i es redueix la potència rebuda.</p>
+            </div>
+          </div>
+          <div class="card compare-top" id="compare-2"></div>
+          </div>
+        </div>
+        <div class="bottom-grid three">
+          <div class="card" id="polar-tx"></div>
+          <div class="card" id="polar-rx"></div>
+          <div class="card" id="orient-results"></div>
+        </div>
+      </div>
+    </section>
+    <!-- SIMULADOR 3 -->
+    <section id="tab-fresnel" class="layout" role="tabpanel" aria-label="Visibilitat directa i zona de Fresnel" hidden>
+      <aside class="side" id="side-fresnel" aria-label="Extrems, antenes i obstacles"></aside>
+      <div class="main-area">
+        <div class="top-grid map-grid">
+          <div class="card map-card">
+            <div class="card-head">
+              <h2>Mapa de l'enllaç</h2>
+              <div class="head-actions">
+                <div class="segmented" role="group" aria-label="Què situa el clic al mapa">
+                  <button type="button" class="seg pick-tx on" data-pick="tx">Situar TX</button>
+                  <button type="button" class="seg pick-rx" data-pick="rx">Situar RX</button>
+                </div>
+                <div class="segmented" role="group" aria-label="Capa de fons">
+                  <button type="button" class="seg on" data-layer="topo">Topogràfic</button>
+                  <button type="button" class="seg" data-layer="mapa">Carrers</button>
+                  <button type="button" class="seg" data-layer="orto">Ortofoto</button>
+                </div>
+              </div>
+            </div>
+            <div id="map" class="map" role="application" aria-label="Mapa interactiu per situar els extrems de l'enllaç"></div>
+          </div>
+          <div class="card" id="fresnel-results"></div>
+        </div>
+        <div class="card viz-card">
+          <div class="card-head">
+            <h2>Perfil d'elevació, línia de visió i 1a zona de Fresnel</h2>
+            <div class="legend">
+              <span class="lg lg-terrain">Terreny</span>
+              <span class="lg lg-fresnel">1a zona de Fresnel</span>
+              <span class="lg lg-req">Límit de Fresnel lliure</span>
+              <span class="lg lg-los">Línia de visió</span>
+              <span class="lg lg-earth">Curvatura terrestre</span>
+            </div>
+            <button type="button" id="btn-fix-dist" class="btn" hidden>Recuperar la distància del perfil</button>
+          </div>
+          <p class="explain-note">L'àrea marró és el terreny sumant-hi la protuberància de la Terra; la franja blava és la 1a zona de Fresnel i la línia discontínua, el límit del percentatge lliure requerit. Arrossega el cim dels pals per canviar l'altura de les antenes i els obstacles per moure'ls. Passa el cursor pel perfil per veure el punt corresponent al mapa.</p>
+          <div id="profile-wrap" class="svg-wrap"></div>
+          <div class="polar-explain">
+            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>
+            <p>Un enllaç pot tenir un balanç de potències favorable i, tot i així, funcionar malament si no hi ha visió directa o si el terreny, edificis o arbres envaeixen la 1a zona de Fresnel. Per això es recomana mantenir lliure, com a mínim, el 60 % del seu radi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toasts" aria-live="polite"></div>
+  <div id="tooltip" role="tooltip"></div>
+
+  <dialog id="about" class="about">
+    <div class="about-head">
+      <h2>Sobre el model</h2>
+      <button type="button" id="about-close" class="icon-btn" aria-label="Tanca">×</button>
+    </div>
+    <div class="about-body">
+      <p>Aquest simulador és una eina didàctica. Utilitza un <strong>model simplificat de propagació en l'espai lliure</strong>:</p>
+      <ul>
+        <li><strong>FSPL</strong> = 32,45 + 20·log<sub>10</sub>(d<sub>km</sub>) + 20·log<sub>10</sub>(f<sub>MHz</sub>). Només depèn de la distància i la freqüència.</li>
+        <li><strong>P<sub>RX</sub></strong> = P<sub>TX</sub> − L<sub>TX</sub> + G<sub>TX,ef</sub> − FSPL + G<sub>RX,ef</sub> − L<sub>RX</sub></li>
+        <li><strong>Marge</strong> M = P<sub>RX</sub> − S<sub>RX</sub> · <strong>PIRE</strong> = P<sub>TX</sub> − L<sub>TX</sub> + G<sub>TX</sub></li>
+      </ul>
+      <h3>Models d'antena</h3>
+      <p>Els diagrames de radiació són <strong>aproximacions analítiques didàctiques</strong>, no dades mesurades ni certificades d'antenes comercials. L'ample de feix es deriva del guany amb l'aproximació de Kraus (G ≈ 30 000 / (θ<sub>H</sub>·θ<sub>V</sub>)), i la forma del diagrama prové d'una obertura il·luminada (circular per a la parabòlica, rectangular per al panell i uniforme per a la Yagi), amb un nivell posterior limitat per la relació davant-darrere. La pèrdua per desalineació es calcula a partir d'aquest diagrama, mai amb una penalització fixa per grau.</p>
+      <h3>Limitacions</h3>
+      <ul>
+        <li>Els simuladors 1 i 2 no consideren obstacles, reflexions, multitrajecte, pluja, gasos atmosfèrics ni esvaïments. El simulador 3 afegeix el perfil del terreny, la curvatura terrestre (factor k) i una estimació de la difracció amb una sola aresta de ganivet (ITU-R P.526); no modela difraccions múltiples, reflexions al terra ni vegetació, que cal afegir com a obstacles.</li>
+        <li>Les cotes del terreny provenen de serveis públics (Open-Meteo amb el model Copernicus DEM GLO-90, o OpenTopoData amb SRTM), amb una resolució aproximada de 90 m. Els mapes són d'OpenTopoMap, OpenStreetMap i Esri. Cal connexió a Internet per al mapa i el perfil.</li>
+        <li>Les altures i les cotes del terreny s'utilitzen per calcular l'angle d'elevació necessari; la FSPL es calcula amb la distància indicada.</li>
+        <li>La sensibilitat és un llindar fixat per l'usuari: no es modelen el soroll, la modulació ni la taxa d'errors.</li>
+        <li>No es consideren pèrdues per desacoblament de polarització ni per desadaptació d'impedàncies.</li>
+        <li>Superar la sensibilitat amb el model ideal <strong>no garanteix</strong> que un enllaç real funcioni: per això cal un marge de reserva.</li>
+      </ul>
+    </div>
+  </dialog>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

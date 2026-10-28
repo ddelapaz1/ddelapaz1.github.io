@@ -1,0 +1,13 @@
+{
+  "name": "calcul-puntapunt",
+  "version": "1.0.0",
+  "description": "Simulador educatiu d'enllaços de microones (mòdul 0365 – Radiocomunicacions)",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "build": "node build.mjs",
+    "serve": "python3 -m http.server 8080 --directory src"
+  },
+  "license": "MIT"
+}
