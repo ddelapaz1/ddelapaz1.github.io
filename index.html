@@ -688,6 +688,13 @@
     .app-p2p:hover .signal { filter:drop-shadow(0 0 5px #7dd3fc80); }
     .app-p2p .tag { border-color:#7dd3fc30; }
     .app-p2p .ripple { background:#7dd3fc35; }
+    .app-sim { --mint:#38bdf8; }
+    .app-sim:hover { border-color:#38bdf880; }
+    .app-sim::before { background:radial-gradient(400px circle at var(--mx) var(--my),#38bdf816,transparent 70%); }
+    .app-sim .wave .ghost { stroke:#38bdf835; }
+    .app-sim:hover .signal { filter:drop-shadow(0 0 5px #38bdf880); }
+    .app-sim .tag { border-color:#38bdf830; }
+    .app-sim .ripple { background:#38bdf835; }
   </style>
 </head>
 
@@ -728,7 +735,7 @@
       <section class="reveal" aria-labelledby="apps-title">
         <div class="section-heading">
           <h2 id="apps-title">Les meves aplicacions</h2>
-          <span class="count">03 MÒDULS / 16 APPS</span>
+          <span class="count">03 MÒDULS / 17 APPS</span>
         </div>
 
         <!-- Cada mòdul és una carpeta desplegable: afegeix les targetes noves dins del seu <ul class="apps">. -->
@@ -993,7 +1000,7 @@
                 <span class="module-code">EEB0 · Mòdul 0962</span>
                 <span class="module-name">Sistemes de potència</span>
               </span>
-              <span class="module-count">7 aplicacions</span>
+              <span class="module-count">8 aplicacions</span>
               <svg class="module-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
             </summary>
 
@@ -1140,6 +1147,27 @@
                     <div>
                       <h3 id="meas-title">Mesures en corrent altern</h3>
                       <p id="meas-desc">Circuits RLC sèrie, paral·lel i mixt: tria dos punts i mesura tensió, intensitat i potències amb un multímetre virtual.</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a class="app app-sim" href="/SimuLAB/" aria-labelledby="sim-title" aria-describedby="sim-desc">
+                  <div class="card-top">
+                    <span>LAB / 018</span>
+                    <span class="tag">Automatismes · CAD</span>
+                  </div>
+                  <svg class="wave" viewBox="0 0 460 95" aria-hidden="true">
+                    <path d="M0 47.5H460" stroke="#ffffff15" />
+                    <path class="ghost" d="M90 14H370 M90 82H370 M140 14V34 M140 54V82 M130 34L140 54 M220 14V36 M220 58V82 M206 36H234V58H206Z M150 44H206" stroke-dasharray="3 3" />
+                    <path class="signal" pathLength="900" d="M310 14V30 M330 14V25 M350 14V30 M356 54 A26 26 0 1 1 304 54 A26 26 0 1 1 356 54 M322 61V46L330 55L338 46V61" />
+                  </svg>
+                  <div class="card-bottom">
+                    <div>
+                      <h3 id="sim-title">SimuLAB</h3>
+                      <p id="sim-desc">Editor i simulador d'esquemes elèctrics de comandament i potència: contactors, temporitzadors, relés tèrmics i arrencada de motors trifàsics.</p>
                     </div>
                     <span class="arrow" aria-hidden="true">→</span>
                   </div>
