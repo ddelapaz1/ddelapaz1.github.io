@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Rúbriques RA1 i RA3 · Enllaç Wi-Fi 5 GHz</title>
+<style>
+  @page { size: A4 landscape; margin: 9mm 10mm 9mm; }
+  :root { --rf: #0891b2; --text: #1c2740; --muted: #5d6b88; --line: #cfd8e6; --soft: #f3f7fb;
+    --l4: #dcfce7; --l3: #ecfccb; --l2: #fef9c3; --l1: #fee2e2; }
+  * { box-sizing: border-box; }
+  body { font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: var(--text); font-size: 7.9pt; line-height: 1.27; margin: 0; }
+  .page { break-after: page; height: 190mm; overflow: hidden; }
+  .page:last-child { break-after: auto; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 3px solid var(--rf); padding-bottom: 5px; margin-bottom: 6px; }
+  header .kicker { font-size: 8pt; text-transform: uppercase; letter-spacing: .06em; color: var(--rf); font-weight: 700; }
+  header h1 { font-size: 15pt; margin: 1px 0 0; }
+  header .act { text-align: right; font-size: 8.5pt; color: var(--muted); }
+  .ra { background: var(--soft); border-left: 4px solid var(--rf); padding: 5px 9px; border-radius: 4px; margin-bottom: 7px; font-size: 9pt; }
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  th, td { border: 1px solid var(--line); padding: 3px 5px; vertical-align: top; }
+  thead th { background: var(--rf); color: #fff; font-size: 8.4pt; text-align: left; }
+  thead th small { display: block; font-weight: 400; opacity: .9; }
+  td.crit { background: var(--soft); }
+  td.crit b { display: block; font-size: 9pt; margin-bottom: 2px; }
+  td.crit .pes { display: inline-block; margin-top: 4px; background: var(--rf); color: #fff; border-radius: 4px; padding: 1px 6px; font-weight: 700; font-size: 8pt; }
+  td.l4 { background: var(--l4); } td.l3 { background: var(--l3); } td.l2 { background: var(--l2); } td.l1 { background: var(--l1); }
+  td.ev { font-size: 8pt; color: var(--muted); }
+  td.ev b { color: var(--text); }
+  ul { margin: 0; padding-left: 13px; }
+  li { margin: 0 0 1px; }
+  .foot { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; margin-top: 7px; font-size: 8.3pt; }
+  .box { border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; }
+  .box h3 { margin: 0 0 3px; font-size: 9pt; color: var(--rf); }
+  .calc td, .calc th { font-size: 8.2pt; padding: 3px 5px; }
+  .calc th { background: var(--soft); color: var(--text); }
+  .blank { height: 13px; }
+</style>
+</head>
+<body>
+
+<!-- ===================== RA1 ===================== -->
+<section class="page">
+  <header>
+    <div><div class="kicker">Mòdul 0365 · Radiocomunicacions · Rúbrica d'avaluació</div><h1>RA1 · Equips i elements dels sistemes de radiocomunicació</h1></div>
+    <div class="act">Activitat: <b>Enllaç Wi-Fi 5 GHz punt a punt</b><br>Evidència: informe PDF generat per l'aplicació</div>
+  </header>
+  <div class="ra"><b>RA1.</b> Identifica els equips i elements dels sistemes de radiocomunicació de xarxes fixes i mòbils i les seves instal·lacions associades, descrivint-ne les característiques i aplicacions.</div>
+  <table>
+    <colgroup><col style="width:13%"><col style="width:19%"><col style="width:17.5%"><col style="width:17.5%"><col style="width:17.5%"><col style="width:15.5%"></colgroup>
+    <thead><tr>
+      <th>Criteri</th>
+      <th>Excel·lent <small>10 punts</small></th>
+      <th>Notable <small>8 punts</small></th>
+      <th>Assolit <small>6 punts</small></th>
+      <th>No assolit <small>3 punts (0 si no hi ha evidència)</small></th>
+      <th>On es comprova a l'informe</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="crit"><b>1.3</b>Classifica els sistemes de radiocomunicació segons la seva ubicació, tecnologies i cobertura.<br><span class="pes">Pes 25 %</span></td>
+        <td class="l4">Identifica l'enllaç com a <b>fix punt a punt</b> en Wi-Fi 5 GHz amb visió directa i ho justifica amb dades del seu enllaç (distància, visió directa, % de Fresnel lliure, curvatura). <b>Compara</b> amb alternatives (punt-multipunt, antena omnidireccional, fibra, xarxa mòbil).</td>
+        <td class="l3">Classifica correctament l'enllaç i la justificació es basa en les dades del seu enllaç, però no el compara amb cap alternativa.</td>
+        <td class="l2">Identifica el tipus d'enllaç i la banda, però la justificació és genèrica o incompleta. Els extrems compleixen els requisits (≥ 5 km, perfil real).</td>
+        <td class="l1">No classifica l'enllaç o ho fa malament, o bé els extrems no compleixen els requisits (&lt; 5 km, terreny d'exemple, sense punt elevat).</td>
+        <td class="ev"><b>Comprovacions «Activitat»</b> (pàg. 1)<br><b>1. Ubicació</b> i mapa<br><b>2. Perfil</b>: estat de visibilitat i Fresnel<br><b>6. Conclusions</b></td>
+      </tr>
+      <tr>
+        <td class="crit"><b>1.6</b>Descriu les característiques dels equips, mitjans de transmissió i elements auxiliars.<br><span class="pes">Pes 40 %</span></td>
+        <td class="l4">Quantifica i interpreta, amb valors dels fulls de característiques:
+          <ul><li>de l'antena: guany, ample de feix i relació entre directivitat i alineació;</li>
+          <li>de la ràdio: potència TX i sensibilitat segons la modulació i l'amplada de canal;</li>
+          <li>les pèrdues de cable o l'antena integrada i l'altura del pal o màstil.</li></ul></td>
+        <td class="l3">Descriu i quantifica correctament la majoria de característiques amb dades dels fulls. Algun paràmetre secundari (ample de feix, pèrdues, màstil) no està justificat.</td>
+        <td class="l2">Indica els valors bàsics (guany, potència, sensibilitat), però no relaciona la sensibilitat amb la modulació ni l'ample de feix amb l'alineació.</td>
+        <td class="l1">Les característiques són incorrectes, inventades o no surten dels fulls de característiques, o falta algun dels equips.</td>
+        <td class="ev"><b>3. Configuració</b>: antenes, feix, cables<br><b>4. Antenes</b>: diagrames i guanys<br><b>5. Equips seleccionats</b> amb els enllaços als fulls<br><b>6. Conclusions</b></td>
+      </tr>
+      <tr>
+        <td class="crit"><b>1.7</b>Relaciona cada equip d'emissió-recepció amb les seves aplicacions característiques.<br><span class="pes">Pes 35 %</span></td>
+        <td class="l4">Tria antenes directives i equips d'exterior per a punt a punt a 5 GHz, compatibles entre els dos extrems. <b>Justifica la tria comparant almenys dues opcions</b> (p. ex. panell o parabòlica, més guany o més tolerància a l'alineació, límit de PIRE).</td>
+        <td class="l3">La tria és adequada a l'aplicació i compatible, i la justifica, però no compara opcions.</td>
+        <td class="l2">La tria és adequada però amb una justificació mínima, o hi ha alguna incoherència menor (p. ex. equips de gammes o fabricants diferents sense comentar-ho).</td>
+        <td class="l1">El tipus d'equip no és adequat (antena omnidireccional, equip d'interior, 2,4 GHz…) o la tria no està justificada.</td>
+        <td class="ev"><b>5. Equips seleccionats</b><br><b>Comprovacions «Equips»</b> (pàg. 1)<br><b>6. Conclusions</b></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="foot">
+    <div class="box">
+      <h3>Càlcul de la nota del RA1 en aquesta activitat</h3>
+      <table class="calc">
+        <tr><th>Criteri</th><th>Pes</th><th>Punts (0–10)</th><th>Ponderat</th></tr>
+        <tr><td>1.3 Classificació</td><td>25 %</td><td class="blank"></td><td></td></tr>
+        <tr><td>1.6 Característiques</td><td>40 %</td><td class="blank"></td><td></td></tr>
+        <tr><td>1.7 Equips i aplicacions</td><td>35 %</td><td class="blank"></td><td></td></tr>
+        <tr><td colspan="3"><b>Nota RA1 (activitat)</b></td><td></td></tr>
+      </table>
+    </div>
+    <div class="box">
+      <h3>Observacions</h3>
+      <p style="margin:0;color:var(--muted)">Nota = Σ (pes × punts). El pes d'aquesta activitat dins del RA1 el fixa el professorat. Si el nivell és «No assolit», indica què cal refer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RA3 ===================== -->
+<section class="page">
+  <header>
+    <div><div class="kicker">Mòdul 0365 · Radiocomunicacions · Rúbrica d'avaluació</div><h1>RA3 · Configuració d'equips de radiocomunicacions</h1></div>
+    <div class="act">Activitat: <b>Enllaç Wi-Fi 5 GHz punt a punt</b><br>Evidència: informe PDF generat per l'aplicació</div>
+  </header>
+  <div class="ra"><b>RA3.</b> Configura equips de radiocomunicacions, relacionant els paràmetres amb la funcionalitat requerida.</div>
+  <table>
+    <colgroup><col style="width:13%"><col style="width:19%"><col style="width:17.5%"><col style="width:17.5%"><col style="width:17.5%"><col style="width:15.5%"></colgroup>
+    <thead><tr>
+      <th>Criteri</th>
+      <th>Excel·lent <small>10 punts</small></th>
+      <th>Notable <small>8 punts</small></th>
+      <th>Assolit <small>6 punts</small></th>
+      <th>No assolit <small>3 punts (0 si no hi ha evidència)</small></th>
+      <th>On es comprova a l'informe</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="crit"><b>3.3</b>Selecciona els paràmetres de configuració segons les característiques, el tipus i el funcionament de l'equip.<br><span class="pes">Pes 35 %</span></td>
+        <td class="l4">Tots els paràmetres de l'informe (guanys, potència TX, sensibilitat, pèrdues) coincideixen amb els fulls de característiques: totes les comprovacions «Equips» diuen <b>COMPLEIX</b>. La sensibilitat és la de la modulació triada i en <b>justifica la tria</b> (velocitat o abast).</td>
+        <td class="l3">Els paràmetres coincideixen amb els fulls de característiques, però la tria de la modulació o la velocitat està poc justificada.</td>
+        <td class="l2">Hi ha alguna comprovació a «REVISAR» (guany amb una diferència de més d'1 dB) o la sensibilitat no indica a quina modulació correspon.</td>
+        <td class="l1">Alguna comprovació d'equips surt «NO COMPLEIX» (potència, sensibilitat o guany), o els paràmetres no surten dels equips reals.</td>
+        <td class="ev"><b>Comprovacions «Equips»</b> (pàg. 1)<br><b>3. Configuració</b><br><b>5. Equips seleccionats</b>: full i informe</td>
+      </tr>
+      <tr>
+        <td class="crit"><b>3.4</b>Parametritza l'equip d'acord amb l'aplicació.<br><span class="pes">Pes 35 %</span></td>
+        <td class="l4">Enllaç <b>VIABLE</b>: 5,5 GHz, marge ≥ 10 dB, ≥ 60 % de la 1a zona de Fresnel lliure i antenes alineades. Les altures són realistes i justificades i hi ha obstacles de l'entorn afegits. Dona el rumb i l'elevació per instal·lar les antenes i analitza alternatives (altura necessària, un altre punt elevat).</td>
+        <td class="l3">Enllaç viable amb els paràmetres correctes, però amb alguna justificació incompleta (obstacles no considerats o altures poc argumentades).</td>
+        <td class="l2">Enllaç «viable amb reserves» (marge &lt; 10 dB o Fresnel parcialment obstruïda); ho reconeix i proposa una millora concreta.</td>
+        <td class="l1">Enllaç no viable sense reconèixer-ho, o els paràmetres són incoherents amb l'aplicació (una altra freqüència, antenes desalineades, altures irreals).</td>
+        <td class="ev"><b>Valoració i comprovacions «Viabilitat»</b> (pàg. 1)<br><b>2. Perfil</b>: altura necessària<br><b>3. Balanç</b> i <b>4. Orientació</b><br><b>6. Conclusions</b></td>
+      </tr>
+      <tr>
+        <td class="crit"><b>3.8</b>Compleix amb la normativa en l'assignació de bandes i freqüències.<br><span class="pes">Pes 30 %</span></td>
+        <td class="l4">Treballa a 5,5 GHz (subbanda 5470–5725 MHz) amb una <b>PIRE ≤ 30 dBm</b>. Calcula la PIRE amb els valors dels equips reals i, si cal, ajusta la potència. Esmenta els requisits de la banda (DFS i TPC, ús compartit sense llicència) i la font normativa (CNAF / ETSI EN 301 893).</td>
+        <td class="l3">Compleix la banda i la PIRE i justifica el càlcul, però no esmenta els requisits addicionals (DFS/TPC) ni la font normativa.</td>
+        <td class="l2">Compleix la banda i la PIRE, però només ho indica la comprovació automàtica, sense cap justificació pròpia.</td>
+        <td class="l1">La PIRE supera els 30 dBm o la freqüència queda fora de la banda indicada.</td>
+        <td class="ev"><b>Comprovacions</b>: freqüència i PIRE (pàg. 1)<br><b>3. Resultats</b>: PIRE<br><b>6. Conclusions</b></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="foot">
+    <div class="box">
+      <h3>Càlcul de la nota del RA3 en aquesta activitat</h3>
+      <table class="calc">
+        <tr><th>Criteri</th><th>Pes</th><th>Punts (0–10)</th><th>Ponderat</th></tr>
+        <tr><td>3.3 Selecció de paràmetres</td><td>35 %</td><td class="blank"></td><td></td></tr>
+        <tr><td>3.4 Parametrització per a l'aplicació</td><td>35 %</td><td class="blank"></td><td></td></tr>
+        <tr><td>3.8 Normativa de bandes i freqüències</td><td>30 %</td><td class="blank"></td><td></td></tr>
+        <tr><td colspan="3"><b>Nota RA3 (activitat)</b></td><td></td></tr>
+      </table>
+    </div>
+    <div class="box">
+      <h3>Observacions</h3>
+      <p style="margin:0;color:var(--muted)">Nota = Σ (pes × punts). Per revisar la configuració, obre l'enllaç de la secció 7 de l'informe: carrega la configuració de l'alumne a l'aplicació. El codi de l'informe surt a la capçalera i al peu de cada pàgina.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>
