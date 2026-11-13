@@ -13,6 +13,10 @@ Tres simuladors que comparteixen els mateixos paràmetres:
    línia de visió, 1a zona de Fresnel, curvatura terrestre (factor k), obstacles afegits per l'usuari,
    estimació de la pèrdua per difracció i altura d'antena necessària.
 
+El botó **Informe PDF** genera l'informe de lliurament (nom i cognoms de l'alumne, mapa, perfil, balanç,
+antenes, equips seleccionats, conclusions i comprovacions de viabilitat), amb un enllaç que torna a obrir
+la mateixa configuració. L'enunciat de l'activitat «Enllaç Wi-Fi 5 GHz» és a `activitat/`.
+
 També inclou escenaris didàctics, comparació amb una configuració de referència, missatges de variació
 generats a partir dels càlculs, mode explicació, tooltips de conceptes i tema clar/fosc.
 
@@ -33,7 +37,7 @@ connexió; el 3 la necessita per al mapa i les cotes del terreny (té un mode «
 | Cotes del terreny | Open-Meteo Elevation API (Copernicus DEM GLO-90); alternativa OpenTopoData (SRTM 90 m) |
 | Cerca de llocs | Nominatim (OpenStreetMap) |
 
-La biblioteca de mapes [Leaflet](https://leafletjs.com) 1.9.4 (BSD-2-Clause) s'inclou a `src/vendor/leaflet/`.
+Les biblioteques [Leaflet](https://leafletjs.com) 1.9.4 (BSD-2-Clause) i [jsPDF](https://github.com/parallax/jsPDF) 2.5.2 (MIT) s'inclouen a `src/vendor/`.
 
 ## Desenvolupament
 

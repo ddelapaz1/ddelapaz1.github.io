@@ -49,11 +49,13 @@ bundle += '})();\n';
 const css = readFileSync(join(SRC, 'css', 'styles.css'), 'utf8');
 const leafletCss = readFileSync(join(SRC, 'vendor', 'leaflet', 'leaflet.css'), 'utf8');
 const leafletJs = readFileSync(join(SRC, 'vendor', 'leaflet', 'leaflet.js'), 'utf8');
+const jspdfJs = readFileSync(join(SRC, 'vendor', 'jspdf', 'jspdf.umd.min.js'), 'utf8');
 let html = readFileSync(join(SRC, 'index.html'), 'utf8');
 const inlineScript = (code) => `<script>\n${code.replace(/<\/script/gi, '<\\/script')}</script>`;
 html = html.replace('<link rel="stylesheet" href="vendor/leaflet/leaflet.css">', () => `<style>\n/* Leaflet 1.9.4 · BSD-2-Clause · © Volodymyr Agafonkin, CloudMade */\n${leafletCss}</style>`);
 html = html.replace('<link rel="stylesheet" href="css/styles.css">', () => `<style>\n${css}</style>`);
 html = html.replace('<script src="vendor/leaflet/leaflet.js"></script>', () => inlineScript(leafletJs));
+html = html.replace('<script src="vendor/jspdf/jspdf.umd.min.js"></script>', () => inlineScript(jspdfJs));
 html = html.replace('<script type="module" src="js/main.js"></script>', () => `<script>\n${bundle.replace(/<\/script/gi, '<\\/script')}</script>`);
 
 mkdirSync(OUT, { recursive: true });

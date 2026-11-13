@@ -18,6 +18,14 @@ const dish29 = { family: 'parabolica', gain: 29 };
 
 export const SCENARIOS = [
   {
+    id: 'activitat-wifi',
+    titol: 'Activitat: enllaç Wi-Fi 5 GHz (5,5 GHz)',
+    text: 'Configuració de partida de l\'activitat: freqüència central de 5,5 GHz i marge mínim de 10 dB. Situa casa teva i un punt elevat a 5 km o més al mapa.',
+    observa: 'Segueix l\'enunciat: situa els extrems, ajusta altures i obstacles, tria antenes i potència (PIRE ≤ 30 dBm), alinea les antenes i genera l\'informe amb el botó «Informe PDF».',
+    tab: 'fresnel',
+    state: make({ fGHz: 5.5, minMargin: 10, cableTx: { lossDb: 0.5 }, cableRx: { lossDb: 0.5 } }),
+  },
+  {
     id: 'ideal',
     titol: 'Escenari 1. Enllaç ideal',
     text: 'Dues parabòliques de 29 dBi perfectament alineades a 10 km i 5,8 GHz. L\'enllaç té un marge de recepció ampli.',

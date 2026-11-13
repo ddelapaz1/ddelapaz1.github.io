@@ -2,8 +2,7 @@
 
 import { h, $, s, clear } from './ui/dom.js';
 import { getState, getResult, getUi, setUi, subscribe, update, replaceState, refresh } from './state.js';
-import { DEFAULT_STATE, cloneState, evaluate, alignedOrientation, linkDirections, gainToward } from './engine/model.js';
-import { dirFromAngles, absAzimuth } from './engine/geometry.js';
+import { DEFAULT_STATE, cloneState, evaluate, alignedOrientation } from './engine/model.js';
 import { describeChanges } from './engine/messages.js';
 import { fmt } from './engine/format.js';
 import { paramControl, P, cableControls, gainControl, antennaSelect, familyGainControl, orientationControls, section } from './ui/controls.js';
@@ -16,9 +15,12 @@ import { createCompare } from './ui/compare.js';
 import { initPlanView, renderPlanView } from './ui/planView.js';
 import { initSideView, renderSideView } from './ui/sideView.js';
 import { renderPolar } from './ui/polar.js';
+import { polarOptions } from './ui/polarConfig.js';
 import { createOrientResults } from './ui/orientResults.js';
 import { toast } from './ui/toasts.js';
 import { SCENARIOS, PATH_EXAMPLES } from './scenarios.js';
+import { openReportDialog } from './report.js';
+import { decodeConfigFromHash } from './share.js';
 import { initMapView, renderMap, setPickMode, getPickMode, setBaseLayer, invalidateMap, flyTo, fitSites, showHover } from './ui/mapView.js';
 import { initProfileView, renderProfileView } from './ui/profileView.js';
 import { createFresnelResults } from './ui/fresnelResults.js';
@@ -129,27 +131,12 @@ function polarCard(root, side) {
     h('div', { class: 'card-head' }, h('h2', { text: `Diagrama de radiació ${side.toUpperCase()}` }), h('div', { class: 'segmented' }, bH, bV)),
     sub, h('div', { class: 'polar-wrap' }, svg));
   function render(state, res) {
-    const a = state.ant[side];
-    const r = res[side];
-    const m = r.model;
-    const dirs = linkDirections(state);
-    if (plane === 'H') {
-      const eCut = dirs.reqEl[side];
-      renderPolar(svg, {
-        side, gMax: m.gain, gEf: r.gEf, bore: absAzimuth(side, a.az), bw: m.omni ? null : m.bwH,
-        other: side === 'tx' ? 0 : 180, otherLabel: side === 'tx' ? 'cap a RX' : 'cap a TX',
-        gainAt: (b) => gainToward(a, side, m, dirFromAngles(b, eCut)),
-      });
-      sub.textContent = `Vista superior, com la vista en planta. Ample de feix H: ${m.omni ? '360°' : `${fmt(m.bwH, 1)}°`}. Línia discontínua: direcció ${side === 'tx' ? 'cap a RX' : 'cap a TX'}; punt taronja: guany efectiu.`;
-    } else {
-      const DEG = Math.PI / 180;
-      renderPolar(svg, {
-        side, gMax: m.gain, gEf: r.gEf, bore: side === 'tx' ? a.el : 180 - a.el, bw: m.bwV,
-        other: side === 'tx' ? dirs.e0 : 180 + dirs.e0, otherLabel: side === 'tx' ? 'cap a RX' : 'cap a TX',
-        gainAt: (g) => gainToward(a, side, m, [Math.cos(g * DEG), 0, Math.sin(g * DEG)]),
-      });
-      sub.textContent = `Tall vertical que conté l'enllaç (0° = horitzontal cap a RX). Ample de feix V: ${fmt(m.bwV, 1)}°. Línia discontínua: direcció ${side === 'tx' ? 'cap a RX' : 'cap a TX'}.`;
-    }
+    const m = res[side].model;
+    renderPolar(svg, polarOptions(state, res, side, plane));
+    const cap = side === 'tx' ? 'cap a RX' : 'cap a TX';
+    sub.textContent = plane === 'H'
+      ? `Vista superior, com la vista en planta. Ample de feix H: ${m.omni ? '360°' : `${fmt(m.bwH, 1)}°`}. Línia discontínua: direcció ${cap}; punt taronja: guany efectiu.`
+      : `Tall vertical que conté l'enllaç (0° = horitzontal cap a RX). Ample de feix V: ${fmt(m.bwV, 1)}°. Línia discontínua: direcció ${cap}.`;
   }
   return render;
 }
@@ -186,7 +173,8 @@ async function loadProfile() {
   setPathStatus('loading', `Obtenint el perfil d'elevació (${n} punts)…`);
   try {
     const { z, source } = await fetchElevations(samplePath(tx, rx, n), profileAbort.signal);
-    applyProfile({ a: tx, b: rx, distKm: dist, ground: z.map((v) => Math.round(v * 10) / 10), source });
+    applyProfile({ a: tx, b: rx, distKm: dist, ground: z.map((v) => Math.round(v * 10) / 10), source }, !keepOrientation);
+    keepOrientation = false;
     setPathStatus('ok', `Perfil de ${n} punts cada ${fmt((dist * 1000) / (n - 1), 0)} m.`);
   } catch (e) {
     if (profileAbort.signal.aborted && e.name === 'AbortError') return;
@@ -195,16 +183,20 @@ async function loadProfile() {
 }
 
 // Aplica un perfil nou: fixa la distància de l'enllaç i encara les antenes en elevació.
-function applyProfile(path) {
+function applyProfile(path, align = true) {
   update((st) => {
     st.path = path;
     st.dKm = path.distKm;
     st.obstacles = st.obstacles.filter((o) => o.dKm > 0 && o.dKm < path.distKm);
+    if (!align) return;
     const al = alignedOrientation(st);
     st.ant.tx.el = al.tx.el;
     st.ant.rx.el = al.rx.el;
   }, 'user');
 }
+
+// Configuració rebuda per l'enllaç d'un informe (#cfg=…): es manté l'orientació desada.
+let keepOrientation = false;
 
 function useSyntheticProfile() {
   profileAbort?.abort();
@@ -412,6 +404,7 @@ function init() {
   ex.addEventListener('change', () => { setUi({ explain: ex.checked }); if (!ex.checked) hideCallout(); });
   $('#btn-theme').addEventListener('click', () => setTheme(getUi().theme === 'dark' ? 'light' : 'dark'));
   $('#btn-about').addEventListener('click', () => $('#about').showModal());
+  $('#btn-report').addEventListener('click', openReportDialog);
   $('#about-close').addEventListener('click', () => $('#about').close());
 
   // Simulador 1
@@ -446,6 +439,18 @@ function init() {
   });
   $('#btn-fix-dist').addEventListener('click', () => { const p = getState().path; if (p) update((st) => { st.dKm = p.distKm; }, 'user'); });
   let lastTab = null;
+
+  // Configuració compartida a l'URL (enllaç inclòs a l'informe PDF)
+  const shared = decodeConfigFromHash(location.hash);
+  if (shared) {
+    replaceState(shared, 'scenario');
+    setUi({ tab: 'fresnel' });
+    if (shared.sites?.tx && shared.sites?.rx) {
+      keepOrientation = true;
+      requestAnimationFrame(() => { fitSites(shared.sites); loadProfile(); });
+    }
+    toast({ level: 'info', title: 'Configuració carregada des de l\'enllaç', lines: ['S\'està tornant a obtenir el perfil del terreny.'] });
+  }
 
   committed = snapshot();
 

@@ -31,6 +31,10 @@
         </select>
       </label>
       <button type="button" id="btn-reset" class="btn ghost" title="Restableix la configuració inicial">Restablir</button>
+      <button type="button" id="btn-report" class="btn primary" title="Genera l'informe en PDF per lliurar-lo">
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 12v6M9 15l3 3 3-3"/></svg>
+        Informe PDF
+      </button>
       <label class="switch" title="Mostra explicacions sobre els esquemes">
         <input type="checkbox" id="explain-toggle" class="switch-input">
         <span class="switch-track"></span><span>Mode explicació</span>
@@ -195,6 +199,8 @@
       </ul>
       <h3>Models d'antena</h3>
       <p>Els diagrames de radiació són <strong>aproximacions analítiques didàctiques</strong>, no dades mesurades ni certificades d'antenes comercials. L'ample de feix es deriva del guany amb l'aproximació de Kraus (G ≈ 30 000 / (θ<sub>H</sub>·θ<sub>V</sub>)), i la forma del diagrama prové d'una obertura il·luminada (circular per a la parabòlica, rectangular per al panell i uniforme per a la Yagi), amb un nivell posterior limitat per la relació davant-darrere. La pèrdua per desalineació es calcula a partir d'aquest diagrama, mai amb una penalització fixa per grau.</p>
+      <h3>Activitat</h3>
+      <p><a href="https://ddelapaz1.github.io/calcul_puntapunt/activitat/enunciat-enllac-wifi-5ghz.pdf" target="_blank" rel="noopener">Enunciat de l'activitat «Enllaç Wi-Fi 5 GHz»</a> (PDF). L'informe que cal lliurar es genera amb el botó «Informe PDF».</p>
       <h3>Limitacions</h3>
       <ul>
         <li>Els simuladors 1 i 2 no consideren obstacles, reflexions, multitrajecte, pluja, gasos atmosfèrics ni esvaïments. El simulador 3 afegeix el perfil del terreny, la curvatura terrestre (factor k) i una estimació de la difracció amb una sola aresta de ganivet (ITU-R P.526); no modela difraccions múltiples, reflexions al terra ni vegetació, que cal afegir com a obstacles.</li>
@@ -208,6 +214,7 @@
   </dialog>
 
   <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/jspdf/jspdf.umd.min.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>

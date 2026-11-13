@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Activitat: Enllaç Wi-Fi 5 GHz</title>
+<style>
+  @page { size: A4; margin: 16mm 16mm 18mm; }
+  :root { --rf: #0891b2; --text: #1c2740; --muted: #5d6b88; --line: #d8e0ec; --soft: #f3f7fb; --ok: #16a34a; --warn: #d97706; }
+  * { box-sizing: border-box; }
+  body { font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: var(--text); font-size: 10.4pt; line-height: 1.45; margin: 0; }
+  header { background: var(--rf); color: #fff; padding: 14px 18px 12px; border-radius: 10px; margin-bottom: 14px; }
+  header .kicker { font-size: 9pt; letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
+  header h1 { margin: 2px 0 2px; font-size: 21pt; }
+  header p { margin: 0; font-size: 10.5pt; }
+  .meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .meta div { background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; }
+  .meta b { display: block; font-size: 8pt; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
+  .meta span { font-weight: 700; }
+  h2 { font-size: 13pt; margin: 16px 0 6px; padding-left: 9px; border-left: 4px solid var(--rf); break-after: avoid; }
+  h3 { font-size: 11pt; margin: 10px 0 4px; color: var(--rf); break-after: avoid; }
+  p { margin: 4px 0 6px; }
+  ul, ol { margin: 4px 0 6px; padding-left: 20px; }
+  li { margin: 2px 0; }
+  a { color: var(--rf); font-weight: 600; }
+  .link-box { border: 2px solid var(--rf); border-radius: 10px; padding: 9px 12px; margin: 8px 0 10px; display: flex; justify-content: space-between; align-items: center; gap: 10px; break-inside: avoid; }
+  .link-box a { font-size: 12.5pt; }
+  .link-box small { color: var(--muted); }
+  .req { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 8px 0; }
+  .req div { border: 1px solid var(--line); border-radius: 9px; padding: 8px 10px; background: var(--soft); }
+  .req strong { display: block; font-size: 14pt; color: var(--rf); }
+  .step { border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px 6px; margin: 8px 0; break-inside: avoid; }
+  .step h3 { margin-top: 2px; }
+  .step .num { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--rf); color: #fff; font-size: 9.5pt; margin-right: 6px; }
+  .note { background: #fff7ed; border-left: 4px solid var(--warn); padding: 6px 10px; border-radius: 6px; margin: 8px 0; break-inside: avoid; }
+  .tip { background: #ecfeff; border-left: 4px solid var(--rf); padding: 6px 10px; border-radius: 6px; margin: 8px 0; break-inside: avoid; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 8px; font-size: 9.8pt; break-inside: avoid; }
+  th, td { border-bottom: 1px solid var(--line); padding: 5px 7px; text-align: left; vertical-align: top; }
+  th { background: var(--soft); font-weight: 700; }
+  td.pct { text-align: right; font-weight: 700; white-space: nowrap; }
+  .formula { font-family: "Cambria Math", Georgia, serif; font-size: 11pt; background: var(--soft); border-radius: 6px; padding: 3px 8px; display: inline-block; margin: 1px 0; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .check li { list-style: none; position: relative; padding-left: 4px; }
+  .check li::before { content: "☐"; position: absolute; left: -16px; color: var(--rf); }
+  .page-break { break-before: page; }
+  footer { margin-top: 14px; font-size: 8.5pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">Mòdul 0365 · Radiocomunicacions · Pràctica</div>
+  <h1>Enllaç Wi-Fi 5 GHz punt a punt</h1>
+  <p>Disseny i estudi de viabilitat d'un enllaç entre casa teva i un punt elevat</p>
+</header>
+
+<div class="meta">
+  <div><b>Freqüència central</b><span>5,5 GHz</span></div>
+  <div><b>Distància mínima</b><span>5 km</span></div>
+  <div><b>Modalitat</b><span>Individual</span></div>
+  <div><b>Lliurament</b><span>PDF a Moodle</span></div>
+</div>
+
+<h2>Context</h2>
+<p>Un proveïdor d'Internet sense fils vol portar connexió a casa teva des d'un punt elevat de la zona: un turó, una muntanya, una torre de telecomunicacions o la terrassa d'un edifici alt. Per fer-ho, cal un <strong>enllaç punt a punt Wi-Fi a la banda de 5 GHz</strong>, amb la freqüència central a <strong>5,5 GHz</strong> (subbanda 5470–5725 MHz).</p>
+<p>Com a tècnic/a, has de dissenyar l'enllaç, comprovar-ne la viabilitat i proposar els equips comercials que faries servir.</p>
+
+<h2>Objectius</h2>
+<ul>
+  <li>Calcular el balanç de potències d'un enllaç real: potència de transmissió, pèrdues, guanys de les antenes, FSPL i marge de recepció.</li>
+  <li>Analitzar la visibilitat directa i la 1a zona de Fresnel sobre el perfil real del terreny, amb la curvatura terrestre i els obstacles.</li>
+  <li>Relacionar el guany i l'ample de feix de les antenes amb la importància de l'alineació.</li>
+  <li>Triar antenes i equips de ràdio reals a partir dels seus fulls de característiques i comprovar que compleixen el disseny.</li>
+  <li>Valorar la viabilitat de l'enllaç i justificar les decisions preses.</li>
+</ul>
+
+<h2>Eina</h2>
+<div class="link-box">
+  <div>Aplicació web <strong>Enllaç punt a punt</strong><br><a href="https://ddelapaz1.github.io/calcul_puntapunt/">https://ddelapaz1.github.io/calcul_puntapunt/</a></div>
+  <small>Ordinador amb Chrome, Edge o Firefox<br>i connexió a Internet (mapa i perfil)</small>
+</div>
+<p>L'aplicació té tres simuladors que comparteixen els paràmetres: <strong>1. Balanç de potències</strong>, <strong>2. Antenes i orientació</strong> i <strong>3. Visibilitat i Fresnel</strong>. Al selector d'escenaris tens l'opció <em>«Activitat: enllaç Wi-Fi 5 GHz (5,5 GHz)»</em> com a punt de partida. El botó <strong>«Informe PDF»</strong> genera el document que has de lliurar.</p>
+
+<h2>Requisits de l'enllaç</h2>
+<div class="req">
+  <div><strong>5,5 GHz</strong>Freqüència central de càlcul.</div>
+  <div><strong>≥ 5 km</strong>Distància entre casa teva i el punt elevat.</div>
+  <div><strong>PIRE ≤ 30 dBm</strong>Límit de referència (1 W) a la banda 5470–5725 MHz.</div>
+  <div><strong>≥ 60 % F1</strong>Part de la 1a zona de Fresnel que ha de quedar lliure.</div>
+  <div><strong>Marge ≥ 10 dB</strong>Reserva sobre la sensibilitat del receptor.</div>
+  <div><strong>Equips reals</strong>Antenes i ràdios comercials amb full de característiques.</div>
+</div>
+
+<div class="page-break"></div>
+<h2>Què has de fer</h2>
+
+<div class="step">
+  <h3><span class="num">1</span>Tria els extrems (simulador 3)</h3>
+  <ul>
+    <li>Selecciona l'escenari <em>«Activitat: enllaç Wi-Fi 5 GHz»</em>.</li>
+    <li>Situa l'extrem <strong>RX</strong> a casa teva i l'extrem <strong>TX</strong> en un punt elevat a <strong>5 km o més</strong>. Pots fer clic al mapa, arrossegar els marcadors, escriure les coordenades o fer servir el cercador.</li>
+    <li>El perfil d'elevació es carrega automàticament. Comprova la distància i el rumb.</li>
+  </ul>
+  <div class="tip">Si prefereixes no indicar l'adreça exacta de casa teva, situa el punt en una cruïlla o una plaça del teu barri. El càlcul serà pràcticament el mateix.</div>
+</div>
+
+<div class="step">
+  <h3><span class="num">2</span>Analitza la visibilitat i la zona de Fresnel</h3>
+  <ul>
+    <li>Posa altures d'antena <strong>realistes</strong>. A casa teva: altura de l'edifici + màstil (per exemple, 4 plantes ≈ 12 m + 2 m). Al punt elevat: una torre o un pal de 5–30 m.</li>
+    <li>El model del terreny <strong>no inclou edificis ni arbres</strong>. Afegeix com a obstacles els més importants del trajecte, sobretot a prop de casa teva, i ajusta'n la posició i l'altura.</li>
+    <li>Mantén k = 4/3 i el criteri del 60 %. Observa el marge mínim, l'altura necessària i la pèrdua per difracció.</li>
+    <li>Si no hi ha visió directa, prova un altre punt elevat o augmenta les altures dins d'uns valors raonables.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="num">3</span>Configura el balanç de potències (simulador 1)</h3>
+  <ul>
+    <li>Freqüència: <strong>5,5 GHz</strong>. Marge mínim desitjat: <strong>10 dB</strong>.</li>
+    <li>Tria el guany de les antenes, la potència de TX, les pèrdues de cable i la sensibilitat del receptor segons els equips que penses fer servir (pas 5).</li>
+    <li>Comprova que la <strong>PIRE ≤ 30 dBm</strong>. Amb antenes de molt guany, cal reduir la potència de TX.</li>
+    <li>Observa a la cascada on es perd el senyal. Si s'aplica la difracció del simulador 3, també hi apareix la pèrdua per obstacles.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="num">4</span>Orienta les antenes (simulador 2)</h3>
+  <ul>
+    <li>Prem <strong>«Alinear antenes»</strong> i comprova que el guany efectiu coincideix amb el nominal.</li>
+    <li>Prova què passa amb 2–5° d'error: com més guany, més estret és el feix i més crítica és l'alineació.</li>
+    <li>Anota el rumb i l'elevació de cada antena per a la instal·lació.</li>
+  </ul>
+</div>
+
+<div class="step">
+  <h3><span class="num">5</span>Busca els equips reals</h3>
+  <p>Busca antenes i equips de ràdio de 5 GHz comercials (per exemple d'Ubiquiti, MikroTik, Cambium Networks, TP-Link, Mimosa…) i descarrega'n el full de característiques. Han de complir:</p>
+  <table>
+    <tr><th>Paràmetre</th><th>Condició</th></tr>
+    <tr><td>Guany de cada antena</td><td>El del full de característiques ha de coincidir amb el de l'informe (±1 dB).</td></tr>
+    <tr><td>Potència de TX</td><td>La potència màxima de l'equip ha de ser igual o superior a la de l'informe.</td></tr>
+    <tr><td>Sensibilitat</td><td>La de l'equip, a la modulació/velocitat triada, ha de ser igual o millor (més negativa) que la de l'informe.</td></tr>
+  </table>
+  <p>Si els valors reals no coincideixen amb els que havies posat, <strong>corregeix la configuració</strong> amb els valors del full i torna a comprovar el balanç. Molts equips porten l'antena integrada: en aquest cas, les pèrdues de cable són pràcticament nul·les (0–0,5 dB).</p>
+  <div class="note">La sensibilitat depèn de la modulació: com més velocitat, pitjor sensibilitat. Fes servir el valor de la taula del fabricant per a la modulació que vols garantir (per exemple, 802.11ac MCS7 a 20 MHz) i indica-ho a l'informe.</div>
+</div>
+
+<div class="step">
+  <h3><span class="num">6</span>Genera l'informe PDF</h3>
+  <ul>
+    <li>Prem <strong>«Informe PDF»</strong> i omple el <strong>nom i els cognoms</strong>, el grup i el nom de l'enllaç.</li>
+    <li>Omple els equips seleccionats (models, guanys, potència, sensibilitat, modulació i enllaços als fulls de característiques).</li>
+    <li>Escriu les <strong>conclusions</strong>: l'enllaç és viable? Per què? Quines decisions has pres (punt elevat, altures, antenes, potència, obstacles) i què milloraries?</li>
+    <li>Revisa les comprovacions del formulari i genera el PDF.</li>
+  </ul>
+</div>
+
+<h2>Lliurament</h2>
+<ul>
+  <li>Puja a Moodle el fitxer generat per l'aplicació, <strong>sense modificar-lo</strong>: <em>Informe_enllac_Cognoms_Nom.pdf</em>.</li>
+  <li>L'informe ha d'incloure: mapa amb els dos extrems, perfil d'elevació amb la zona de Fresnel, configuració i balanç de potències, antenes i diagrames de radiació, equips seleccionats i conclusions.</li>
+  <li>L'informe inclou un enllaç que permet al professorat tornar a obrir la teva configuració a l'aplicació.</li>
+</ul>
+
+<h3>Llista de comprovació abans de lliurar</h3>
+<div class="two">
+<ul class="check">
+  <li>Freqüència de 5,5 GHz.</li>
+  <li>Distància de 5 km o més, amb perfil real (no el terreny d'exemple).</li>
+  <li>Altures d'antena realistes i obstacles afegits.</li>
+  <li>Visió directa i 60 % de la 1a zona de Fresnel lliure (o justificació).</li>
+</ul>
+<ul class="check">
+  <li>Marge de recepció de 10 dB o més.</li>
+  <li>PIRE de 30 dBm o menys.</li>
+  <li>Antenes alineades.</li>
+  <li>Equips reals amb enllaços als fulls i conclusions escrites.</li>
+</ul>
+</div>
+
+<h2>Criteris d'avaluació</h2>
+<table>
+  <tr><th>Criteri</th><th>Què es valora</th><th style="text-align:right">Pes</th></tr>
+  <tr><td>Ubicació dels extrems</td><td>Distància ≥ 5 km, punt elevat adequat, perfil real del terreny.</td><td class="pct">10 %</td></tr>
+  <tr><td>Visibilitat i Fresnel</td><td>Altures realistes, obstacles de l'entorn, anàlisi del marge i de l'altura necessària.</td><td class="pct">25 %</td></tr>
+  <tr><td>Balanç de potències</td><td>5,5 GHz, marge ≥ 10 dB, PIRE ≤ 30 dBm, coherència de tots els paràmetres i antenes alineades.</td><td class="pct">25 %</td></tr>
+  <tr><td>Equips seleccionats</td><td>Antenes i ràdios reals, fulls de característiques, guanys, potència i sensibilitat coherents amb l'informe.</td><td class="pct">25 %</td></tr>
+  <tr><td>Conclusions</td><td>Valoració justificada de la viabilitat, decisions preses i propostes de millora.</td><td class="pct">15 %</td></tr>
+</table>
+
+<h2>Recordatori</h2>
+<div class="two">
+<div>
+  <p><span class="formula">FSPL = 32,45 + 20·log d<sub>km</sub> + 20·log f<sub>MHz</sub></span></p>
+  <p><span class="formula">P<sub>RX</sub> = P<sub>TX</sub> − L<sub>TX</sub> + G<sub>TX</sub> − FSPL + G<sub>RX</sub> − L<sub>RX</sub></span></p>
+  <p><span class="formula">PIRE = P<sub>TX</sub> − L<sub>TX</sub> + G<sub>TX</sub></span> &nbsp; <span class="formula">M = P<sub>RX</sub> − S</span></p>
+</div>
+<div>
+  <p><span class="formula">r<sub>1</sub> = 17,32·√(d<sub>1</sub>·d<sub>2</sub> / (f·d))</span> (m; d en km, f en GHz)</p>
+  <p><span class="formula">h<sub>Terra</sub> = d<sub>1</sub>·d<sub>2</sub> / (12,74·k)</span> (m; d en km)</p>
+  <p>A 5,5 GHz, λ ≈ 5,45 cm. Cada vegada que es duplica la distància, la FSPL augmenta ≈ 6 dB.</p>
+</div>
+</div>
+<p class="note">El límit de PIRE de 30 dBm és el valor de referència de la subbanda 5470–5725 MHz (ETSI EN 301 893, amb control de potència i selecció dinàmica de freqüència). En un projecte real cal consultar la normativa vigent (CNAF).</p>
+
+<footer>Mòdul 0365 – Radiocomunicacions · Activitat «Enllaç Wi-Fi 5 GHz» · Aplicació: https://ddelapaz1.github.io/calcul_puntapunt/</footer>
+</body>
+</html>
